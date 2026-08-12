@@ -211,107 +211,6 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   .svc-list li{font-size:16px; padding:.7rem .95rem; gap:.5rem}
   .svc-list svg{width:19px; height:19px}
 }
-.est-wrap{max-width:640px; margin-inline:auto}
-.lbl-note{
-  font-family:'Karla',sans-serif; font-weight:400; font-size:15px;
-  letter-spacing:0; text-transform:none; color:var(--muted);
-}
-@media(max-width:900px){
-  .hero-in{grid-template-columns:1fr; gap:2.5rem; padding:2rem 0 2.7rem}
-}
-
-/* ---------- estimator (signature) ---------- */
-.est{
-  background:var(--paper); color:var(--ink); border-radius:20px; box-shadow:var(--shadow-lg);
-  overflow:hidden; border:1px solid rgba(214,176,90,.5);
-}
-.est-head{
-  background:var(--paper-dim); color:var(--pine); padding:1.05rem 1.5rem;
-  border-bottom:1px solid rgba(214,176,90,.55);
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-}
-.est-head .eyebrow{color:var(--gold-deep)}
-.est-head small{font-size:15px; color:var(--muted); font-family:'Karla',sans-serif; letter-spacing:0}
-.est-body{padding:1.35rem 1.5rem}
-.field{margin-bottom:1.1rem}
-.field:last-child{margin-bottom:0}
-.field > label{
-  display:block; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:16px;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:.7rem;
-  text-align:center;
-}
-.seg{display:grid; grid-template-columns:repeat(3,1fr); gap:.4rem}
-.seg button{
-  background:var(--paper-dim); border:1.5px solid transparent; border-radius:10px;
-  padding:.75rem .35rem; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:17.5px;
-  letter-spacing:.05em; text-transform:uppercase; color:var(--muted);
-  transition:all .16s ease; text-align:center;
-}
-.seg button:hover{border-color:var(--gold-deep); color:var(--pine)}
-.seg button[aria-pressed="true"]{background:var(--gold); border-color:var(--gold-deep); color:var(--pine-deep)}
-.seg button small{display:block; font-family:'Karla',sans-serif; font-size:14px; letter-spacing:0;
-  text-transform:none; opacity:.75; margin-top:2px; font-weight:400}
-
-.stepper{display:flex; align-items:center; justify-content:center; gap:.9rem}
-.stepper button{
-  width:48px; height:48px; border-radius:50%; border:1.5px solid var(--line);
-  background:var(--paper-dim); font-size:24px; font-family:'Zilla Slab',serif; line-height:1;
-  color:var(--pine); display:grid; place-items:center; transition:all .16s;
-}
-.stepper button:hover:not(:disabled){background:var(--gold); color:var(--pine-deep); border-color:var(--gold-deep)}
-.stepper button:disabled{opacity:.32; cursor:not-allowed}
-.stepper output{
-  font-family:'Zilla Slab',serif; font-size:29px; font-weight:700; min-width:2.6ch; text-align:center; color:var(--pine);
-}
-.stepper .dogword{font-size:16.5px; color:var(--muted)}
-.dog-max{
-  margin-top:.9rem; padding:.9rem 1rem; border-radius:10px; display:grid; gap:.2rem;
-  background:var(--pine); border:1px solid var(--gold); font-size:16px; line-height:1.45; text-align:center;
-  color:rgba(251,247,239,.92);
-}
-.dog-max[hidden]{display:none}
-.dog-max strong{color:var(--gold); font-size:17px}
-.dog-max a{color:var(--gold); font-weight:700}
-
-.est-out{background:var(--paper-dim); color:var(--ink); padding:1.4rem 1.5rem; position:relative; overflow:hidden;
-  border-top:1px solid rgba(214,176,90,.55)}
-/* hatch removed: the estimator stays light for maximum legibility */
-.est-out > *{position:relative; z-index:2}
-.price-row{display:flex; align-items:flex-end; justify-content:center; gap:.65rem}
-.price{font-family:'Zilla Slab',serif; font-size:clamp(2.9rem,7vw,3.6rem); font-weight:700; color:var(--pine); line-height:.92; letter-spacing:-.02em}
-.price-row .per{font-family:'Barlow Condensed',sans-serif; font-size:17px; letter-spacing:.12em;
-  text-transform:uppercase; color:var(--muted); padding-bottom:.35rem}
-.sub-lines{margin-top:.9rem; padding-top:.9rem; border-top:1px solid rgba(19,57,42,.16);
-  display:grid; gap:.5rem; font-size:16.5px}
-.sub-lines div{display:flex; justify-content:center; gap:.7rem; color:var(--ink)}
-.sub-lines b{color:var(--pine); font-weight:700; white-space:nowrap}
-.est-note{font-size:16px; color:var(--muted); margin-top:.85rem; line-height:1.55}
-
-/* one-time first cleanup — called out so it is never a surprise */
-.est-first{
-  background:#fff; border:2px solid var(--gold-deep);
-  border-radius:12px; padding:1.15rem 1.1rem; text-align:center;
-}
-.est-tag{
-  display:inline-block; font-family:'Barlow Condensed',sans-serif; font-weight:700;
-  font-size:14.5px; letter-spacing:.15em; text-transform:uppercase;
-  color:var(--pine-deep); background:var(--gold); border-radius:999px;
-  padding:.3rem .75rem; margin-bottom:.8rem; line-height:1;
-}
-.est-first-row{display:flex; align-items:baseline; justify-content:center; gap:.85rem; flex-wrap:wrap}
-.est-first-name{font-size:17.5px; font-weight:700; color:var(--pine)}
-.est-first-amt{
-  font-family:'Zilla Slab',serif; font-size:2.1rem; font-weight:700;
-  color:var(--pine); line-height:1; white-space:nowrap;
-}
-.est-first-sub{font-size:16.5px; color:var(--muted); line-height:1.5; margin-top:.55rem}
-.est-then{
-  display:flex; align-items:center; gap:.8rem; margin:1.15rem 0 .5rem;
-  font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:15px;
-  letter-spacing:.15em; text-transform:uppercase; color:var(--gold-deep);
-}
-.est-then::before,.est-then::after{content:''; height:1px; background:rgba(19,57,42,.18); flex:1}
-.est-out .btn{width:100%; margin-top:1.1rem}
 
 /* ---------- owner trust strip ---------- */
 .owner{background:var(--paper); border-bottom:1px solid var(--line)}
@@ -376,20 +275,6 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   display:flex; flex-direction:column;
 }
 .plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg)}
-.plan-flag{
-  background:var(--paper-dim); color:var(--muted); text-align:center; padding:.42rem;
-  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15px;
-  letter-spacing:.16em; text-transform:uppercase; border-bottom:1px solid var(--line);
-}
-/* the recommended plan keeps solid gold; these two stay tinted so they inform without competing */
-.plan-value .plan-flag,
-.plan-total .plan-flag{
-  background:#F1E4C4; color:#57420E; border-bottom-color:rgba(87,66,14,.28);
-}
-/* recommended plan carries the accent; the other two stay quiet */
-.plan-featured{border:2px solid var(--gold-deep); box-shadow:var(--shadow-lg); transform:translateY(-10px)}
-.plan-featured:hover{transform:translateY(-15px)}
-.plan-featured .plan-flag{background:var(--gold); color:var(--pine-deep); border-bottom:0; padding:.55rem}
 @media(max-width:900px){
   .plan-featured{transform:none}
   .plan-featured:hover{transform:translateY(-5px)}
@@ -406,7 +291,11 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .plan-price b{font-family:'Zilla Slab',serif; font-size:3.5rem; font-weight:700; line-height:.88; color:var(--pine); letter-spacing:-.03em}
 .plan-price span{font-family:'Barlow Condensed',sans-serif; font-size:16px; letter-spacing:.12em;
   text-transform:uppercase; color:var(--muted); padding-bottom:.4rem}
-.plan-month{font-size:16.5px; color:var(--gold-deep); font-weight:700}
+.plan-basis{
+  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:.2rem;
+}
+.plan-extra{font-size:16px; color:var(--muted); margin-top:.3rem}
 .plan-first{
   margin-top:1.1rem; padding:.7rem .85rem; text-align:center; line-height:1.4;
   font-size:16px; font-weight:700; color:var(--muted);
@@ -418,20 +307,22 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .plan li svg{width:18px; height:18px; flex:none; margin-top:3px; color:var(--gold-deep)}
 /* bonus service — deliberately unlike the cleanup-fee callout below it */
 .plan-bonus{
-  display:flex; align-items:center; justify-content:center; gap:.55rem;
+  display:flex; align-items:center; justify-content:center; gap:.6rem;
   position:relative; overflow:hidden;
-  margin-top:1.2rem; padding:.8rem .8rem; border-radius:9px; text-align:center;
-  background:var(--mint); color:var(--mint-ink); border:1px solid var(--mint-line);
-  font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px;
-  letter-spacing:.08em; text-transform:uppercase; line-height:1.2;
+  margin:.7rem 0 0; padding:.1rem 0; text-align:left;
+  color:var(--gold-deep); font-weight:700; font-size:17px; line-height:1.55;
 }
-.plan-bonus svg{width:20px; height:20px; flex:none; color:var(--mint-line)}
+.plan-bonus svg{width:18px; height:18px; flex:none; color:var(--gold-deep)}
 /* shared, deliberately faint sheen */
 .foot-grid .btn-gold{position:relative; overflow:hidden}
-.plan-bonus::after,
 .foot-grid .btn-gold::after{
   content:''; position:absolute; top:0; bottom:0; left:0; width:30%; pointer-events:none;
   background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
+  transform:translateX(-180%); animation:sheen 7s ease-in-out infinite;
+}
+.plan-bonus::after{
+  content:''; position:absolute; top:0; bottom:0; left:0; width:40%; pointer-events:none;
+  background:linear-gradient(100deg, transparent, rgba(214,176,90,.6), transparent);
   transform:translateX(-180%); animation:sheen 7s ease-in-out infinite;
 }
 @keyframes sheen{ 0%,82%{transform:translateX(-180%)} 100%{transform:translateX(360%)} }
@@ -440,8 +331,19 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 }
 .plan-bonus + .plan-first{margin-top:.65rem}
 .plan .btn{width:100%; margin-top:1.6rem}
-.plans-note{margin-top:1rem; text-align:center; font-size:17px; color:var(--muted)}
-@media(max-width:900px){.plans{grid-template-columns:1fr; max-width:440px; margin-inline:auto}}
+/* small screens: cards swipe horizontally so they can still be compared */
+.plans-hint{display:none; text-align:center; font-size:15.5px; color:var(--muted); margin:0 0 1rem}
+@media(max-width:900px){
+  .plans{
+    display:grid; grid-auto-flow:column; grid-template-columns:none;
+    grid-auto-columns:minmax(264px,76vw); gap:1rem;
+    overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    padding:12px 4px 1.4rem; margin-inline:0;
+  }
+  .plans > .plan{scroll-snap-align:center}
+  .plan-featured, .plan-featured:hover{transform:none}
+  .plans-hint{display:block}
+}
 
 /* ---------- first cleanup band ---------- */
 .first{background:var(--paper-dim); color:var(--ink)}
@@ -595,17 +497,6 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 @media(max-width:860px){.area-tip{margin-top:1.4rem; padding:1.4rem}}
 
 
-/* ---------- estimator attention pulse ---------- */
-@keyframes estPulse{
-  0%   {box-shadow:0 0 0 0 rgba(214,176,90,.75), var(--shadow-lg)}
-  65%  {box-shadow:0 0 0 20px rgba(214,176,90,0), var(--shadow-lg)}
-  100% {box-shadow:0 0 0 0 rgba(214,176,90,0), var(--shadow-lg)}
-}
-.est.attn{border-color:var(--gold); animation:estPulse 1.15s ease-out 2}
-@media(prefers-reduced-motion:reduce){
-  .est.attn{animation:none; box-shadow:0 0 0 4px rgba(214,176,90,.75), var(--shadow-lg)}
-}
-
 /* ---------- reveal ---------- */
 .rv{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease}
 .rv.in{opacity:1; transform:none}
@@ -657,7 +548,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     </a>
     <nav>
       <a href="#plans">Plans &amp; pricing</a>
-      <a href="#estimator">Price estimate</a>
       <a href="#included">What's included</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -669,7 +559,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   <nav class="mobile-nav" id="mobileNav" aria-label="Main menu" hidden>
     <div class="wrap">
       <a href="#plans">Plans &amp; pricing</a>
-      <a href="#estimator">Price estimate</a>
       <a href="#included">What's included</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text</a>
@@ -690,7 +579,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         </div>
       </div>
       <h1>We scoop <em>so you don't.</em></h1>
-      <p class="lede">We clean your yard on the same day every week, every two weeks, or once a month. We take the waste with us. You don't need to be home.</p>
+      <p class="lede">We clean your yard on the same day every week, every two weeks, or once a month &mdash; and you never need to be home.</p>
       <ul class="svc-list">
         <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Remove all dog waste</li>
         <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dispose of waste properly</li>
@@ -708,49 +597,52 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Plans &amp; pricing</h2>
-      <p class="plans-note">Every plan adds $5 per visit for each extra dog.</p>
     </div>
+    <p class="plans-hint">Swipe to compare plans &rarr;</p>
     <div class="plans">
 
       <div class="plan plan-value rv">
-        <div class="plan-flag">Lowest cost per visit</div>
         <div class="plan-pad">
           <h3>Weekly <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$20</b><span>per visit</span></div>
+          <p class="plan-basis">For one dog</p>
+          <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Plus a one-time initial cleanup, starting at $50</p>
-          <a class="btn btn-outline" href="tel:+14793661369">Start weekly</a>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
+          <p class="plan-first">Initial cleanup, starting at $50, required for first-time customers</p>
+          <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
         </div>
       </div>
 
       <div class="plan plan-featured rv">
-        <div class="plan-flag">Most popular</div>
         <div class="plan-pad">
           <h3>Every 2 weeks <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
+          <p class="plan-basis">For one dog</p>
+          <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one or two dogs</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Plus a one-time initial cleanup, starting at $50</p>
-          <a class="btn btn-gold" href="tel:+14793661369">Start every 2 weeks</a>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
+          <p class="plan-first">Initial cleanup, starting at $50, required for first-time customers</p>
+          <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
         </div>
       </div>
 
       <div class="plan plan-total rv">
-        <div class="plan-flag">Lowest monthly total</div>
         <div class="plan-pad">
           <h3>Monthly <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$40</b><span>per visit</span></div>
+          <p class="plan-basis">For one dog</p>
+          <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a big yard</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Plus a one-time initial cleanup, starting at $50</p>
-          <a class="btn btn-outline" href="tel:+14793661369">Start monthly</a>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
+          <p class="plan-first">Initial cleanup, starting at $50, required for first-time customers</p>
+          <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
         </div>
       </div>
 
@@ -758,80 +650,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   </div>
 </section>
 
-<!-- ============ PRICE ESTIMATOR ============ -->
-<section class="sec" id="estimator-sec">
-  <div class="wrap est-wrap">
-    <div class="sec-head center rv">
-      <h2>Price estimate</h2>
-      <p class="lede">Answer four quick questions and the price updates as you choose. Prefer to talk? Call or text and we'll price it with you.</p>
-    </div>
-    <div class="est" id="estimator">
-      <div class="est-body">
-        <div class="field">
-          <label id="lbl-dogs">How many dogs?</label>
-          <div class="stepper" role="group" aria-labelledby="lbl-dogs">
-            <button type="button" id="dogMinus" aria-label="One fewer dog">&minus;</button>
-            <output id="dogCount" aria-live="polite">1</output>
-            <button type="button" id="dogPlus" aria-label="One more dog">+</button>
-            <span class="dogword" id="dogWord">dog</span>
-          </div>
-          <div class="dog-max" id="dogMax" role="status" aria-live="polite" hidden>
-            <strong>More than 6 dogs?</strong>
-            <span>We price bigger yards over the phone.</span>
-            <a href="tel:+14793661369">Call or text 479.366.1369</a>
-          </div>
-        </div>
-
-        <div class="field">
-          <label id="lbl-freq">How often should we come?</label>
-          <div class="seg" role="group" aria-labelledby="lbl-freq" id="freqSeg">
-            <button type="button" data-freq="weekly" aria-pressed="true">Weekly<small>4 visits/mo (recurring)</small></button>
-            <button type="button" data-freq="biweekly" aria-pressed="false">Every 2 weeks<small>2 visits/mo (recurring)</small></button>
-            <button type="button" data-freq="monthly" aria-pressed="false">Monthly<small>1 visit/mo (recurring)</small></button>
-          </div>
-        </div>
-
-        <div class="field">
-          <label id="lbl-yard">Yard size <span class="lbl-note">(affects first visit only)</span></label>
-          <div class="seg" role="group" aria-labelledby="lbl-yard" id="yardSeg">
-            <button type="button" data-yard="s" aria-pressed="true">Small</button>
-            <button type="button" data-yard="m" aria-pressed="false">Medium</button>
-            <button type="button" data-yard="l" aria-pressed="false">Large</button>
-          </div>
-        </div>
-
-        <div class="field">
-          <label id="lbl-waste">How long since the last cleanup?</label>
-          <div class="seg" role="group" aria-labelledby="lbl-waste" id="wasteSeg">
-            <button type="button" data-waste="light" aria-pressed="true">1&ndash;2 weeks<small>Light</small></button>
-            <button type="button" data-waste="mod" aria-pressed="false">About a month<small>Moderate</small></button>
-            <button type="button" data-waste="heavy" aria-pressed="false">Longer<small>Heavy</small></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="est-out">
-        <div class="est-first">
-          <span class="est-tag">Pay once &middot; first visit</span>
-          <div class="est-first-row">
-            <span class="est-first-name">Initial cleanup</span>
-            <b class="est-first-amt" id="outFirst">$50</b>
-          </div>
-          <p class="est-first-sub">A one-time charge on your first visit, separate from your regular price. We quote it at your door before any work starts.</p>
-        </div>
-        <div class="est-then"><span>Then, every visit after</span></div>
-        <div class="price-row">
-          <span class="price" id="outPrice">$20</span>
-          <span class="per">per visit</span>
-        </div>
-        <div class="sub-lines">
-          <div><span id="outMonthLabel">4 visits a month (recurring)</span><b id="outMonth">$80/mo</b></div>
-        </div>
-        <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="strip">
   <div class="wrap strip-in">
@@ -931,7 +749,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </a>
       <div class="foot-links">
         <a href="#plans">Plans</a>
-        <a href="#estimator">Price estimate</a>
         <a href="#included">What's included</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -948,101 +765,9 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 (function(){
   'use strict';
 
-  /* ---------- estimator ---------- */
-  var state = { dogs:1, freq:'weekly', yard:'s', waste:'light' };
-
-  var VISIT   = { weekly:20, biweekly:30, monthly:40 };
-  var PERMO   = { weekly:4,  biweekly:2,  monthly:1  };
-  var MOLABEL = { weekly:'4 visits a month (recurring)', biweekly:'2 visits a month (recurring)', monthly:'1 visit a month (recurring)' };
-  var EXTRA_DOG = 5;
-
-  /* First-cleanup model — starts at $50, adjusted by yard, buildup, extra dogs. */
-  var FIRST_BASE = 50;
-  var YARD_ADD   = { s:0,  m:12, l:25 };
-  var WASTE_ADD  = { light:0, mod:15, heavy:35 };
-  var FIRST_DOG  = 10;
-
   var el = function(id){ return document.getElementById(id); };
-  var outPrice = el('outPrice'), outMonth = el('outMonth'),
-      outFirst = el('outFirst'), outMonthLabel = el('outMonthLabel'),
-      dogCount = el('dogCount'), dogWord = el('dogWord'),
-      dogMinus = el('dogMinus'), dogPlus = el('dogPlus'), dogMax = el('dogMax');
-  var dogMaxTimer;
-
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function animate(node, to, prefix){
-    var from = parseInt((node.textContent||'').replace(/\D/g,''), 10) || 0;
-    if (reduce || from === to){ node.textContent = prefix + to; return; }
-    var start = performance.now(), dur = 340;
-    (function tick(now){
-      var t = Math.min(1, (now - start) / dur);
-      var e = 1 - Math.pow(1 - t, 3);
-      node.textContent = prefix + Math.round(from + (to - from) * e);
-      if (t < 1) requestAnimationFrame(tick);
-    })(start);
-  }
-
-  function render(){
-    var perVisit = VISIT[state.freq] + (state.dogs - 1) * EXTRA_DOG;
-    var monthly  = perVisit * PERMO[state.freq];
-    var first    = FIRST_BASE + YARD_ADD[state.yard] + WASTE_ADD[state.waste]
-                 + (state.dogs - 1) * FIRST_DOG;
-
-    animate(outPrice, perVisit, '$');
-    animate(outFirst, first, '$');
-    outMonth.textContent = '$' + monthly + '/mo';
-    outMonthLabel.textContent = MOLABEL[state.freq];
-
-    dogCount.textContent = state.dogs;
-    dogWord.textContent = state.dogs === 1 ? 'dog' : 'dogs';
-    dogMinus.disabled = state.dogs <= 1;
-  }
-
-  function wireSeg(id, key){
-    var group = el(id);
-    if (!group) return;
-    group.addEventListener('click', function(ev){
-      var btn = ev.target.closest('button');
-      if (!btn || !group.contains(btn)) return;
-      var buttons = group.querySelectorAll('button');
-      for (var i = 0; i < buttons.length; i++) buttons[i].setAttribute('aria-pressed','false');
-      btn.setAttribute('aria-pressed','true');
-      state[key] = btn.dataset[key];
-      render();
-    });
-  }
-
-  wireSeg('freqSeg','freq');
-  wireSeg('yardSeg','yard');
-  wireSeg('wasteSeg','waste');
-
-  dogMinus.addEventListener('click', function(){ if (state.dogs > 1){ dogMax.hidden = true; state.dogs--; render(); } });
-  dogPlus.addEventListener('click',  function(){
-    if (state.dogs < 6){ dogMax.hidden = true; state.dogs++; render(); return; }
-    dogMax.hidden = false;                       /* at the cap: point them to the phone */
-    clearTimeout(dogMaxTimer);
-    dogMaxTimer = setTimeout(function(){ dogMax.hidden = true; }, 10000);
-  });
-
-  render();
-
-  /* ---------- links to #estimator: scroll to it and flag it ---------- */
-  var estCard = document.getElementById('estimator');
-  var attnTimer;
-
-  function flagEstimator(){
-    estCard.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-    estCard.classList.remove('attn');
-    void estCard.offsetWidth;            /* force reflow so the animation restarts on repeat clicks */
-    estCard.classList.add('attn');
-    clearTimeout(attnTimer);
-    attnTimer = setTimeout(function(){ estCard.classList.remove('attn'); }, reduce ? 1800 : 2400);
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll('a[href="#estimator"]'), function(a){
-    a.addEventListener('click', function(ev){ ev.preventDefault(); flagEstimator(); });
-  });
 
   /* ---------- FAQ: single-open accordion ---------- */
   var qs = document.querySelectorAll('.faq .q');
