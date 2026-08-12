@@ -380,9 +380,7 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   letter-spacing:.16em; text-transform:uppercase; border-bottom:1px solid var(--line);
 }
 /* the recommended plan keeps solid gold; these two stay tinted so they inform without competing */
-.plan-value .plan-flag{
-  background:#DBE9EC; color:#134349; border-bottom-color:rgba(19,67,73,.28);
-}
+.plan-value .plan-flag,
 .plan-total .plan-flag{
   background:#F1E4C4; color:#57420E; border-bottom-color:rgba(87,66,14,.28);
 }
@@ -715,7 +713,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         <div class="plan-pad">
           <h3>Weekly <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$20</b><span>per visit</span></div>
-          <p class="plan-month">$80 a month &middot; 4 visits</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
           </ul>
@@ -730,7 +727,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         <div class="plan-pad">
           <h3>Every 2 weeks <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
-          <p class="plan-month">$60 a month &middot; 2 visits</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one or two dogs</li>
           </ul>
@@ -745,7 +741,6 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         <div class="plan-pad">
           <h3>Monthly <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$40</b><span>per visit</span></div>
-          <p class="plan-month">$40 a month &middot; 1 visit</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a big yard</li>
           </ul>
@@ -1114,9 +1109,45 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 
   /* ---------- header shrinks after the first scroll ---------- */
   var hdr = document.querySelector('header');
-  function sizeHeader(){ hdr.classList.toggle('shrunk', window.scrollY > 60); }
+  var heroLockup = document.querySelector('.hero-lockup');
+  function sizeHeader(){
+    var past = heroLockup
+      ? heroLockup.getBoundingClientRect().bottom <= hdr.getBoundingClientRect().height
+      : window.scrollY > 60;
+    hdr.classList.toggle('shrunk', past);
+  }
   window.addEventListener('scroll', sizeHeader, { passive:true });
   sizeHeader();
+
+  /* ---------- lockup: match the three stacked lines to one width ---------- */
+  (function fitLockup(){
+    if (!heroLockup) return;
+    var lines = [heroLockup.querySelector('b'),
+                 heroLockup.querySelector('.brand-name2'),
+                 heroLockup.querySelector('.brand-tag')].filter(Boolean);
+    if (lines.length < 2) return;
+    function fit(){
+      lines.forEach(function(el){ el.style.letterSpacing = ''; el.style.marginRight = ''; });
+      var target = Math.max.apply(null, lines.map(function(el){
+        return el.getBoundingClientRect().width;
+      }));
+      /* correct iteratively: each line may already carry its own letter-spacing */
+      for (var pass = 0; pass < 3; pass++){
+        lines.forEach(function(el){
+          var chars = (el.textContent || '').length;
+          var w = el.getBoundingClientRect().width;
+          if (!chars || w <= 0) return;
+          var cur  = parseFloat(getComputedStyle(el).letterSpacing) || 0;
+          var next = cur + (target - w) / chars;
+          el.style.letterSpacing = next + 'px';
+          el.style.marginRight = (-next) + 'px';   /* drop the trailing gap so it stays centred */
+        });
+      }
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  })();
 
   el('yr').textContent = new Date().getFullYear();
 })();
