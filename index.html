@@ -395,13 +395,18 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   letter-spacing:.08em; text-transform:uppercase; line-height:1.2;
 }
 .plan-bonus svg{width:20px; height:20px; flex:none; color:var(--mint-line)}
-.plan-bonus::after{
-  content:''; position:absolute; top:0; bottom:0; left:0; width:42%;
-  background:linear-gradient(100deg, transparent, rgba(255,255,255,.9), transparent);
-  transform:translateX(-170%); animation:sheen 5s ease-in-out infinite;
+/* shared, deliberately faint sheen */
+.foot-grid .btn-gold{position:relative; overflow:hidden}
+.plan-bonus::after,
+.foot-grid .btn-gold::after{
+  content:''; position:absolute; top:0; bottom:0; left:0; width:30%; pointer-events:none;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
+  transform:translateX(-180%); animation:sheen 7s ease-in-out infinite;
 }
-@keyframes sheen{ 0%,70%{transform:translateX(-170%)} 100%{transform:translateX(330%)} }
-@media(prefers-reduced-motion:reduce){ .plan-bonus::after{display:none} }
+@keyframes sheen{ 0%,82%{transform:translateX(-180%)} 100%{transform:translateX(360%)} }
+@media(prefers-reduced-motion:reduce){
+  .plan-bonus::after, .foot-grid .btn-gold::after{display:none}
+}
 .plan-bonus + .plan-first{margin-top:.65rem}
 .plan .btn{width:100%; margin-top:1.6rem}
 .plans-note{margin-top:1.9rem; text-align:center; font-size:17px; color:var(--muted)}
@@ -433,16 +438,17 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 @media(max-width:460px){.factors{grid-template-columns:1fr}}
 
 /* ---------- included ---------- */
-.incl-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem}
+.incl-grid{display:grid; grid-template-columns:1fr; gap:1rem; max-width:720px; margin-inline:auto}
 .incl-card{
   background:var(--pine-deep); border:1px solid rgba(214,176,90,.45);
-  border-radius:var(--r); padding:1.9rem 1.7rem; transition:border-color .2s ease, transform .2s ease;
+  border-radius:var(--r); padding:1.35rem 1.6rem; transition:border-color .2s ease, transform .2s ease;
+  display:flex; align-items:center; gap:1.2rem;
 }
 .incl-card:hover{border-color:rgba(214,176,90,.55); transform:translateY(-3px)}
 .incl-ic{width:42px; height:42px; border-radius:11px; background:rgba(214,176,90,.24);
-  border:1px solid rgba(214,176,90,.6); display:grid; place-items:center; margin-bottom:1.15rem}
+  border:1px solid rgba(214,176,90,.6); display:grid; place-items:center; flex:none}
 .incl-ic svg{width:19px; height:19px; color:var(--gold)}
-.incl-card h4{font-size:1.3rem; color:var(--paper); margin-bottom:.45rem; font-family:'Zilla Slab',serif}
+.incl-card h4{font-size:1.3rem; color:var(--paper); margin-bottom:0; font-family:'Zilla Slab',serif}
 .incl-card p{font-size:17px; color:rgba(251,247,239,.92); line-height:1.6}
 @media(max-width:800px){.incl-grid{grid-template-columns:1fr}}
 
@@ -534,8 +540,6 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem; font-size:16px}
 .foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:3rem; align-items:center; padding-bottom:2.2rem; border-bottom:1px solid rgba(214,176,90,.18)}
 .foot-brand{margin-right:0}
-.foot-brand img{width:92px; height:92px}
-.foot-brand .brand-txt b{font-size:27px}
 .foot-links{display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center}
 .foot-links a{
   text-decoration:none; color:rgba(251,247,239,.72); font-family:'Barlow Condensed',sans-serif;
@@ -664,8 +668,7 @@ header.shrunk .brand-tag{display:none}
 <section class="sec plans-sec" id="plans">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">Plans &amp; pricing</span>
-      <h2>Pick how often we come.</h2>
+      <h2>Plans &amp; pricing</h2>
     </div>
     <div class="plans">
 
@@ -726,14 +729,10 @@ header.shrunk .brand-tag{display:none}
 <section class="sec" id="estimator-sec">
   <div class="wrap est-wrap">
     <div class="sec-head center rv">
-      <h2>Not sure which plan fits?</h2>
-      <p class="lede">Answer four quick questions for an estimate. Prefer to talk? Call or text and we'll price it with you.</p>
+      <h2>Price estimate</h2>
+      <p class="lede">Answer four quick questions and the price updates as you choose. Prefer to talk? Call or text and we'll price it with you.</p>
     </div>
     <div class="est" id="estimator">
-      <div class="est-head">
-        <span class="eyebrow">Price estimate</span>
-        <small>Updates as you choose</small>
-      </div>
       <div class="est-body">
         <div class="field">
           <label id="lbl-dogs">How many dogs?</label>
@@ -810,12 +809,6 @@ header.shrunk .brand-tag{display:none}
   </div>
 </div>
 
-<section class="owner">
-  <div class="wrap owner-in">
-    <span class="owner-ic"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg></span>
-    <p><strong>Randy Darby started Doggytime Discreet Disposal here in Centerton</strong>, and he still answers the phone.</p>
-  </div>
-</section>
 
 
 
@@ -824,29 +817,24 @@ header.shrunk .brand-tag{display:none}
 <section class="sec sec-dark" id="included">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">What's included</span>
-      <h2>Every visit includes:</h2>
+      <h2>What's included</h2>
     </div>
     <div class="incl-grid">
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-search"/></svg></span>
         <h4>We check the whole yard</h4>
-        <p>Fence lines, under the deck, behind the shed. If your dog goes there, we check it.</p>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg></span>
         <h4>We take the waste with us</h4>
-        <p>It leaves in our truck. Nothing sits in your trash can waiting for pickup day.</p>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg></span>
         <h4>Complimentary odor eliminator</h4>
-        <p>We treat the spots your dog uses. A yard that looks clean should smell clean too.</p>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg></span>
         <h4>We latch the gate &amp; send you a text</h4>
-        <p>We check it every time. You get a text when we're done, so you know the yard is safe.</p>
       </div>
     </div>
   </div>
