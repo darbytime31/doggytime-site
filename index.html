@@ -59,7 +59,8 @@ button{font:inherit; color:inherit; cursor:pointer}
   letter-spacing:.16em; text-transform:uppercase; line-height:1;
 }
 .lede{font-size:21px; color:var(--muted); line-height:1.6}
-.on-dark .lede{color:rgba(251,247,239,.88)}
+.on-dark .lede,
+.sec-dark .lede{color:rgba(251,247,239,.9)}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -137,11 +138,12 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   overflow:hidden; border:1px solid rgba(214,176,90,.5);
 }
 .est-head{
-  background:var(--pine-deep); color:var(--paper); padding:1.05rem 1.5rem;
+  background:var(--paper-dim); color:var(--pine); padding:1.05rem 1.5rem;
+  border-bottom:1px solid rgba(214,176,90,.55);
   display:flex; align-items:center; justify-content:space-between; gap:1rem;
 }
-.est-head .eyebrow{color:var(--gold)}
-.est-head small{font-size:14.5px; color:rgba(251,247,239,.74); font-family:'Karla',sans-serif; letter-spacing:0}
+.est-head .eyebrow{color:var(--gold-deep)}
+.est-head small{font-size:15px; color:var(--muted); font-family:'Karla',sans-serif; letter-spacing:0}
 .est-body{padding:1.35rem 1.5rem}
 .field{margin-bottom:1.1rem}
 .field:last-child{margin-bottom:0}
@@ -156,8 +158,8 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   letter-spacing:.05em; text-transform:uppercase; color:var(--muted);
   transition:all .16s ease; text-align:center;
 }
-.seg button:hover{border-color:var(--gold); color:var(--pine)}
-.seg button[aria-pressed="true"]{background:var(--pine); border-color:var(--pine); color:var(--paper)}
+.seg button:hover{border-color:var(--gold-deep); color:var(--pine)}
+.seg button[aria-pressed="true"]{background:var(--gold); border-color:var(--gold-deep); color:var(--pine-deep)}
 .seg button small{display:block; font-family:'Karla',sans-serif; font-size:14px; letter-spacing:0;
   text-transform:none; opacity:.75; margin-top:2px; font-weight:400}
 
@@ -167,25 +169,51 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   background:var(--paper-dim); font-size:24px; font-family:'Zilla Slab',serif; line-height:1;
   color:var(--pine); display:grid; place-items:center; transition:all .16s;
 }
-.stepper button:hover:not(:disabled){background:var(--pine); color:var(--paper); border-color:var(--pine)}
+.stepper button:hover:not(:disabled){background:var(--gold); color:var(--pine-deep); border-color:var(--gold-deep)}
 .stepper button:disabled{opacity:.32; cursor:not-allowed}
 .stepper output{
   font-family:'Zilla Slab',serif; font-size:29px; font-weight:700; min-width:2.6ch; text-align:center; color:var(--pine);
 }
 .stepper .dogword{font-size:16.5px; color:var(--muted)}
 
-.est-out{background:var(--pine); color:var(--paper); padding:1.4rem 1.5rem; position:relative; overflow:hidden}
-.est-out::before{content:''; position:absolute; inset:0; background:var(--hatch); opacity:.42}
+.est-out{background:var(--paper-dim); color:var(--ink); padding:1.4rem 1.5rem; position:relative; overflow:hidden;
+  border-top:1px solid rgba(214,176,90,.55)}
+/* hatch removed: the estimator stays light for maximum legibility */
 .est-out > *{position:relative; z-index:2}
 .price-row{display:flex; align-items:flex-end; gap:.65rem}
-.price{font-family:'Zilla Slab',serif; font-size:clamp(2.9rem,7vw,3.6rem); font-weight:700; color:var(--gold); line-height:.92; letter-spacing:-.02em}
+.price{font-family:'Zilla Slab',serif; font-size:clamp(2.9rem,7vw,3.6rem); font-weight:700; color:var(--pine); line-height:.92; letter-spacing:-.02em}
 .price-row .per{font-family:'Barlow Condensed',sans-serif; font-size:17px; letter-spacing:.12em;
-  text-transform:uppercase; color:rgba(251,247,239,.8); padding-bottom:.35rem}
-.sub-lines{margin-top:.9rem; padding-top:.9rem; border-top:1px solid rgba(214,176,90,.3);
+  text-transform:uppercase; color:var(--muted); padding-bottom:.35rem}
+.sub-lines{margin-top:.9rem; padding-top:.9rem; border-top:1px solid rgba(19,57,42,.16);
   display:grid; gap:.5rem; font-size:16.5px}
-.sub-lines div{display:flex; justify-content:space-between; gap:1rem; color:rgba(251,247,239,.84)}
-.sub-lines b{color:var(--paper); font-weight:700; white-space:nowrap}
-.est-note{font-size:16px; color:rgba(251,247,239,.78); margin-top:.85rem; line-height:1.55}
+.sub-lines div{display:flex; justify-content:space-between; gap:1rem; color:var(--ink)}
+.sub-lines b{color:var(--pine); font-weight:700; white-space:nowrap}
+.est-note{font-size:16px; color:var(--muted); margin-top:.85rem; line-height:1.55}
+
+/* one-time first cleanup — called out so it is never a surprise */
+.est-first{
+  background:#fff; border:2px solid var(--gold-deep);
+  border-radius:12px; padding:1rem 1.1rem 1.05rem;
+}
+.est-tag{
+  display:inline-block; font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  font-size:14.5px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--pine-deep); background:var(--gold); border-radius:999px;
+  padding:.3rem .75rem; margin-bottom:.8rem; line-height:1;
+}
+.est-first-row{display:flex; align-items:baseline; justify-content:space-between; gap:1rem}
+.est-first-name{font-size:17.5px; font-weight:700; color:var(--pine)}
+.est-first-amt{
+  font-family:'Zilla Slab',serif; font-size:2.1rem; font-weight:700;
+  color:var(--pine); line-height:1; white-space:nowrap;
+}
+.est-first-sub{font-size:15.5px; color:var(--muted); line-height:1.5; margin-top:.55rem}
+.est-then{
+  display:flex; align-items:center; gap:.8rem; margin:1.15rem 0 .5rem;
+  font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:15px;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--gold-deep);
+}
+.est-then::before,.est-then::after{content:''; height:1px; background:rgba(19,57,42,.18); flex:1}
 .est-out .btn{width:100%; margin-top:1.1rem}
 
 /* ---------- owner trust strip ---------- */
@@ -207,7 +235,7 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .sec{padding:5.5rem 0}
 .sec-tight{padding:4rem 0}
 .sec-dark{background:var(--pine); color:var(--paper); position:relative; overflow:hidden}
-.sec-dark::before{content:''; position:absolute; inset:0; background:var(--hatch); opacity:.45}
+.sec-dark::before{content:''; position:absolute; inset:0; background:var(--hatch); opacity:.2}
 .sec-dark > .wrap{position:relative; z-index:2}
 .sec-head{max-width:640px; margin-bottom:3rem}
 .sec-head .eyebrow{color:var(--gold-deep); display:block; margin-bottom:.9rem}
@@ -251,9 +279,17 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 }
 .plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg)}
 .plan-flag{
-  background:var(--gold); color:var(--pine-deep); text-align:center; padding:.42rem;
+  background:var(--paper-dim); color:var(--muted); text-align:center; padding:.42rem;
   font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15px;
-  letter-spacing:.16em; text-transform:uppercase;
+  letter-spacing:.16em; text-transform:uppercase; border-bottom:1px solid var(--line);
+}
+/* recommended plan carries the accent; the other two stay quiet */
+.plan-featured{border:2px solid var(--gold-deep); box-shadow:var(--shadow-lg); transform:translateY(-10px)}
+.plan-featured:hover{transform:translateY(-15px)}
+.plan-featured .plan-flag{background:var(--gold); color:var(--pine-deep); border-bottom:0; padding:.55rem}
+@media(max-width:900px){
+  .plan-featured{transform:none}
+  .plan-featured:hover{transform:translateY(-5px)}
 }
 .plan-pad{padding:1.9rem 1.7rem; display:flex; flex-direction:column; flex:1}
 .plan h3{font-size:1.7rem; color:var(--pine)}
@@ -263,6 +299,12 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .plan-price span{font-family:'Barlow Condensed',sans-serif; font-size:16px; letter-spacing:.12em;
   text-transform:uppercase; color:var(--muted); padding-bottom:.4rem}
 .plan-month{font-size:16.5px; color:var(--gold-deep); font-weight:700}
+.plan-first{
+  margin-top:1.1rem; padding:.7rem .85rem; text-align:center; line-height:1.4;
+  font-size:16px; font-weight:700; color:var(--pine);
+  background:rgba(214,176,90,.2); border:1px solid var(--gold-deep); border-radius:10px;
+}
+.plan-first + .btn{margin-top:.85rem}
 .plan ul{list-style:none; padding:1.35rem 0 0; margin:1.35rem 0 0; border-top:1px solid var(--line); display:grid; gap:.65rem; align-content:start; flex:1}
 .plan li{display:flex; gap:.6rem; font-size:17px; line-height:1.55; align-items:flex-start}
 .plan li svg{width:18px; height:18px; flex:none; margin-top:3px; color:var(--gold-deep)}
@@ -270,37 +312,42 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 @media(max-width:900px){.plans{grid-template-columns:1fr; max-width:440px; margin-inline:auto}}
 
 /* ---------- first cleanup band ---------- */
-.first{background:var(--wheat); color:var(--pine-deep)}
-.first-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:3.5rem; align-items:center}
+.first{background:var(--paper-dim); color:var(--ink)}
+.first-grid{display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center}
 .first h2{font-size:clamp(1.9rem,3.8vw,2.6rem); margin-bottom:.9rem}
 .first .eyebrow{color:var(--gold-deep); display:block; margin-bottom:.9rem}
-.first p{color:#413B2C; font-size:18.5px}
+.first p{color:var(--ink); font-size:18.5px}
 .first-price{
   font-family:'Zilla Slab',serif; font-size:3rem; font-weight:700; color:var(--pine);
-  margin:1.2rem 0 .3rem; line-height:1; letter-spacing:-.02em;
+  margin:.6rem 0 .35rem; line-height:1; letter-spacing:-.02em;
 }
-.factors{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem}
-.factor{background:rgba(255,255,255,.62); border:1px solid rgba(19,57,42,.12); border-radius:12px; padding:1.35rem 1.1rem; text-align:center}
+.first-callout{
+  background:#fff; border:2px solid var(--gold-deep); border-radius:var(--r);
+  padding:1.3rem 1.4rem; margin-top:1.7rem;
+}
+.first-note{font-size:17px; color:var(--muted); line-height:1.5}
+.factors{display:grid; grid-template-columns:repeat(2,1fr); gap:1.1rem}
+.factor{background:#fff; border:1px solid rgba(19,57,42,.16); border-radius:12px; padding:1.5rem 1.3rem; text-align:center}
 .factor-ic{width:46px; height:46px; border-radius:50%; background:var(--pine); display:grid; place-items:center; margin:0 auto .85rem}
 .factor-ic svg{width:22px; height:22px; color:var(--gold)}
-.factor h4{font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px;
-  letter-spacing:.11em; text-transform:uppercase; color:var(--pine); margin-bottom:.35rem; line-height:1.2}
-.factor p{font-size:15.5px; color:#4E4736; line-height:1.5}
+.factor h4{font-family:'Zilla Slab',serif; font-weight:700; font-size:19px;
+  letter-spacing:0; color:var(--pine); margin-bottom:.4rem; line-height:1.25}
+.factor p{font-size:16.5px; color:var(--muted); line-height:1.5}
 @media(max-width:980px){.first-grid{grid-template-columns:1fr; gap:2.5rem} .factors{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:460px){.factors{grid-template-columns:1fr}}
 
 /* ---------- included ---------- */
 .incl-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem}
 .incl-card{
-  background:rgba(251,247,239,.05); border:1px solid rgba(214,176,90,.24);
+  background:var(--pine-deep); border:1px solid rgba(214,176,90,.45);
   border-radius:var(--r); padding:1.9rem 1.7rem; transition:border-color .2s ease, transform .2s ease;
 }
 .incl-card:hover{border-color:rgba(214,176,90,.55); transform:translateY(-3px)}
-.incl-ic{width:42px; height:42px; border-radius:11px; background:rgba(214,176,90,.14);
-  border:1px solid rgba(214,176,90,.34); display:grid; place-items:center; margin-bottom:1.15rem}
+.incl-ic{width:42px; height:42px; border-radius:11px; background:rgba(214,176,90,.24);
+  border:1px solid rgba(214,176,90,.6); display:grid; place-items:center; margin-bottom:1.15rem}
 .incl-ic svg{width:19px; height:19px; color:var(--gold)}
 .incl-card h4{font-size:1.3rem; color:var(--paper); margin-bottom:.45rem; font-family:'Zilla Slab',serif}
-.incl-card p{font-size:17px; color:rgba(251,247,239,.84); line-height:1.55}
+.incl-card p{font-size:17px; color:rgba(251,247,239,.92); line-height:1.6}
 @media(max-width:800px){.incl-grid{grid-template-columns:1fr}}
 
 /* ---------- odor eliminator ---------- */
@@ -542,15 +589,23 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
       </div>
 
       <div class="est-out">
+        <div class="est-first">
+          <span class="est-tag">Pay once &middot; first visit</span>
+          <div class="est-first-row">
+            <span class="est-first-name">Initial cleanup</span>
+            <b class="est-first-amt" id="outFirst">$50</b>
+          </div>
+          <p class="est-first-sub">A one-time charge on your first visit, separate from your regular price. We quote it at your door before any work starts.</p>
+        </div>
+        <div class="est-then"><span>Then, every visit after</span></div>
         <div class="price-row">
           <span class="price" id="outPrice">$20</span>
           <span class="per">per visit</span>
         </div>
         <div class="sub-lines">
-          <div><span id="outMonthLabel">About 4 visits a month</span><b id="outMonth">$80/mo</b></div>
-          <div><span>First-time cleanup</span><b id="outFirst">$50</b></div>
+          <div><span id="outMonthLabel">4 visits a month</span><b id="outMonth">$80/mo</b></div>
         </div>
-        <p class="est-note">Your regular price never changes. We quote the first cleanup at your door, before we start.</p>
+        <p class="est-note">Your regular price never changes once it's set.</p>
         <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Lock in this price</a>
       </div>
     </div>
@@ -607,7 +662,7 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
     <div class="sec-head rv">
       <span class="eyebrow">Plans &amp; pricing</span>
       <h2>Pick how often we come.</h2>
-      <p class="lede">Prices are per visit for one dog. Add $5 per visit for each extra dog. Odor treatment is free on every plan.</p>
+      <p class="lede">Prices are per visit for one dog. Add $5 per visit for each extra dog. Odor treatment is free on every plan. Every new customer also pays a one-time initial cleanup, starting at $50.</p>
     </div>
     <div class="plans">
 
@@ -617,30 +672,32 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
           <h3>Weekly</h3>
           <p class="cadence">Same day every week</p>
           <div class="plan-price"><b>$20</b><span>per visit</span></div>
-          <p class="plan-month">About $80 a month &middot; 4 visits</p>
+          <p class="plan-month">$80 a month &middot; 4 visits</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Never more than 7 days of buildup</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>+$5 per visit for each extra dog</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Free odor treatment</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
           </ul>
-          <a class="btn btn-pine" href="tel:+14793661369">Start weekly</a>
+          <p class="plan-first">Plus a one-time initial cleanup, from $50</p>
+          <a class="btn btn-outline" href="tel:+14793661369">Start weekly</a>
         </div>
       </div>
 
-      <div class="plan rv">
+      <div class="plan plan-featured rv">
         <div class="plan-flag">Most popular</div>
         <div class="plan-pad">
           <h3>Bi-weekly</h3>
           <p class="cadence">Every other week</p>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
-          <p class="plan-month">About $60 a month &middot; 2 visits</p>
+          <p class="plan-month">$60 a month &middot; 2 visits</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Good for one or two dogs</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>+$5 per visit for each extra dog</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Free odor treatment</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Keeps the yard under control</li>
           </ul>
+          <p class="plan-first">Plus a one-time initial cleanup, from $50</p>
           <a class="btn btn-pine" href="tel:+14793661369">Start bi-weekly</a>
         </div>
       </div>
@@ -658,7 +715,8 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Free odor treatment</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a big yard</li>
           </ul>
-          <a class="btn btn-pine" href="tel:+14793661369">Start monthly</a>
+          <p class="plan-first">Plus a one-time initial cleanup, from $50</p>
+          <a class="btn btn-outline" href="tel:+14793661369">Start monthly</a>
         </div>
       </div>
 
@@ -673,8 +731,11 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
       <span class="eyebrow">Your first visit</span>
       <h2>We start with a full clean-up.</h2>
       <p>No matter how far behind the yard is, we clear all of it. After that, your regular price starts.</p>
-      <div class="first-price">$50 and up</div>
-      <p><strong>Quoted at your door, before we start.</strong></p>
+      <div class="first-callout">
+        <span class="est-tag">Pay once &middot; first visit</span>
+        <div class="first-price">$50 and up</div>
+        <p class="first-note">A one-time charge, quoted at your door before we start.</p>
+      </div>
     </div>
     <div class="factors">
       <div class="factor rv">
@@ -885,7 +946,7 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 
   var VISIT   = { weekly:20, biweekly:30, monthly:40 };
   var PERMO   = { weekly:4,  biweekly:2,  monthly:1  };
-  var MOLABEL = { weekly:'About 4 visits a month', biweekly:'About 2 visits a month', monthly:'1 visit a month' };
+  var MOLABEL = { weekly:'4 visits a month', biweekly:'2 visits a month', monthly:'1 visit a month' };
   var EXTRA_DOG = 5;
 
   /* First-cleanup model — starts at $50, adjusted by yard, buildup, extra dogs. */
