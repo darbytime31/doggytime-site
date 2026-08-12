@@ -28,6 +28,9 @@
   --gold:#D6B05A;
   --gold-deep:#7A5A10;
   --wheat:#F2DFB6;
+  --mint:#DDEFE3;
+  --mint-line:#4E8C63;
+  --mint-ink:#1C4B31;
   --paper:#FBF7EF;
   --paper-dim:#F1EADC;
   --ink:#1B2620;
@@ -87,7 +90,8 @@ header{
   position:sticky; top:0; z-index:60; background:rgba(13,41,30,.94);
   backdrop-filter:blur(10px); border-bottom:1px solid rgba(214,176,90,.22);
 }
-.bar{display:flex; align-items:center; gap:1.5rem; padding:.55rem 0}
+.bar{display:flex; align-items:center; gap:1.5rem; padding:.55rem 0; transition:padding .22s ease}
+.brand img{transition:width .22s ease, height .22s ease}
 .brand{display:flex; align-items:center; gap:.7rem; text-decoration:none; margin-right:auto}
 .brand img{width:76px; height:76px; object-fit:contain; flex:none}
 .brand-txt{display:flex; flex-direction:column; line-height:1}
@@ -104,7 +108,33 @@ nav a{
 nav a:hover{color:var(--gold); border-color:var(--gold)}
 .bar .btn{padding:.7rem 1.15rem; font-size:17px}
 @media(max-width:1220px){nav{gap:.8rem} nav a{font-size:15px}}
-@media(max-width:900px){nav{display:none}}
+@media(max-width:900px){.bar nav{display:none}}
+
+/* ---------- mobile menu ---------- */
+.navtoggle{
+  display:none; width:48px; height:48px; flex:none; padding:0;
+  border:1.5px solid rgba(251,247,239,.5); border-radius:12px; background:transparent;
+  flex-direction:column; align-items:center; justify-content:center; gap:5px;
+}
+.navtoggle span{
+  display:block; width:22px; height:2px; background:var(--paper); border-radius:2px;
+  transition:transform .2s ease, opacity .2s ease;
+}
+.navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{background:var(--pine-deep); border-top:1px solid rgba(214,176,90,.3); padding:.6rem 0 1.3rem}
+.mobile-nav[hidden]{display:none}
+.mobile-nav .wrap{display:grid}
+.mobile-nav a{
+  display:block; padding:1rem .2rem; text-decoration:none;
+  font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:19px;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--paper);
+  border-bottom:1px solid rgba(251,247,239,.14);
+}
+.mobile-nav a.btn{margin-top:1.1rem; border-bottom:0; color:var(--pine-deep)}
+@media(max-width:900px){.navtoggle{display:flex}}
+@media(min-width:901px){.mobile-nav{display:none}}
 @media(max-width:520px){.bar .btn span{display:none} .brand-txt b{font-size:21px}
   .brand img{width:60px; height:60px} .brand-name2{font-size:14px}}
 
@@ -134,19 +164,33 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 
 /* licensed badge + paw-bullet service list */
 .hero-badge{
-  display:inline-flex; align-items:center; gap:.5rem; align-self:center;
-  margin-top:1rem; padding:.5rem .95rem; border-radius:999px;
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.5rem .95rem; border-radius:999px;
   background:rgba(214,176,90,.16); border:1px solid var(--gold);
   font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:16.5px;
   letter-spacing:.12em; text-transform:uppercase; color:var(--gold); line-height:1;
 }
 .hero-badge svg{width:18px; height:18px; flex:none}
-.svc-list{list-style:none; padding:0; margin:1.6rem auto 0; display:grid; gap:.8rem; text-align:left}
-.svc-list li{
-  display:flex; align-items:flex-start; gap:.8rem; font-size:19px;
-  line-height:1.45; color:rgba(251,247,239,.94);
+.hero-meta{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:.8rem 1.2rem; margin-bottom:.2rem;
 }
-.svc-list svg{width:23px; height:23px; flex:none; color:var(--gold); margin-top:1px}
+.svc-list{
+  list-style:none; padding:0; margin:2.1rem auto 0; display:flex;
+  flex-wrap:wrap; justify-content:center; gap:.7rem; max-width:880px;
+}
+.svc-list li{
+  display:inline-flex; align-items:center; gap:.6rem; text-align:left;
+  padding:.75rem 1.15rem; border-radius:999px; font-size:17px; line-height:1.3;
+  background:rgba(251,247,239,.07); border:1px solid rgba(214,176,90,.32);
+  color:rgba(251,247,239,.96);
+}
+.svc-list svg{width:21px; height:21px; flex:none; color:var(--gold)}
+@media(max-width:560px){
+  .svc-list{gap:.6rem}
+  .svc-list li{font-size:16px; padding:.7rem .95rem; gap:.5rem}
+  .svc-list svg{width:19px; height:19px}
+}
 .est-wrap{max-width:640px; margin-inline:auto}
 .lbl-note{
   font-family:'Karla',sans-serif; font-weight:400; font-size:15px;
@@ -269,7 +313,7 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .sec-dark{background:var(--pine); color:var(--paper); position:relative; overflow:hidden}
 .sec-dark::before{content:''; position:absolute; inset:0; background:var(--hatch); opacity:.2}
 .sec-dark > .wrap{position:relative; z-index:2}
-.sec-head{max-width:640px; margin-bottom:3rem}
+.sec-head{max-width:660px; margin:0 auto 3rem; text-align:center}
 .sec-head .eyebrow{color:var(--gold-deep); display:block; margin-bottom:.9rem}
 .sec-dark .sec-head .eyebrow{color:var(--gold)}
 .sec-head h2{font-size:clamp(2.1rem,4.4vw,3rem); margin-bottom:1rem}
@@ -303,10 +347,11 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 @media(max-width:840px){.steps{grid-template-columns:1fr} .step-line{display:none}}
 
 /* ---------- plans ---------- */
+.plans-sec{background:var(--paper-dim); border-bottom:1px solid var(--line)}
 .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; align-items:stretch}
 .plan{
-  background:var(--paper); color:var(--ink); border-radius:var(--r); overflow:hidden;
-  border:1px solid rgba(214,176,90,.35); transition:transform .2s ease, box-shadow .2s ease;
+  background:#fff; color:var(--ink); border-radius:var(--r); overflow:hidden;
+  border:1px solid rgba(214,176,90,.45); box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease;
   display:flex; flex-direction:column;
 }
 .plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg)}
@@ -333,8 +378,8 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .plan-month{font-size:16.5px; color:var(--gold-deep); font-weight:700}
 .plan-first{
   margin-top:1.1rem; padding:.7rem .85rem; text-align:center; line-height:1.4;
-  font-size:16px; font-weight:700; color:var(--pine);
-  background:rgba(214,176,90,.2); border:1px solid var(--gold-deep); border-radius:10px;
+  font-size:16px; font-weight:700; color:var(--muted);
+  background:transparent; border:1px dashed rgba(19,57,42,.35); border-radius:10px;
 }
 .plan-first + .btn{margin-top:.85rem}
 .plan ul{list-style:none; padding:1.35rem 0 0; margin:1.35rem 0 0; border-top:1px solid var(--line); display:grid; gap:.65rem; align-content:start; flex:1}
@@ -343,14 +388,23 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 /* bonus service — deliberately unlike the cleanup-fee callout below it */
 .plan-bonus{
   display:flex; align-items:center; justify-content:center; gap:.55rem;
-  margin-top:1.2rem; padding:.75rem .8rem; border-radius:9px; text-align:center;
-  background:var(--pine); color:var(--gold);
+  position:relative; overflow:hidden;
+  margin-top:1.2rem; padding:.8rem .8rem; border-radius:9px; text-align:center;
+  background:var(--mint); color:var(--mint-ink); border:1px solid var(--mint-line);
   font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:17px;
   letter-spacing:.08em; text-transform:uppercase; line-height:1.2;
 }
-.plan-bonus svg{width:20px; height:20px; flex:none}
+.plan-bonus svg{width:20px; height:20px; flex:none; color:var(--mint-line)}
+.plan-bonus::after{
+  content:''; position:absolute; top:0; bottom:0; left:0; width:42%;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.9), transparent);
+  transform:translateX(-170%); animation:sheen 5s ease-in-out infinite;
+}
+@keyframes sheen{ 0%,70%{transform:translateX(-170%)} 100%{transform:translateX(330%)} }
+@media(prefers-reduced-motion:reduce){ .plan-bonus::after{display:none} }
 .plan-bonus + .plan-first{margin-top:.65rem}
 .plan .btn{width:100%; margin-top:1.6rem}
+.plans-note{margin-top:1.9rem; text-align:center; font-size:17px; color:var(--muted)}
 @media(max-width:900px){.plans{grid-template-columns:1fr; max-width:440px; margin-inline:auto}}
 
 /* ---------- first cleanup band ---------- */
@@ -524,6 +578,13 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
   html{scroll-behavior:auto}
   .rv{opacity:1; transform:none}
 }
+/* ---------- header shrinks after the first scroll (last so it always wins) ---------- */
+header.shrunk .bar{padding:.2rem 0}
+header.shrunk .brand img{width:50px; height:50px}
+header.shrunk .brand-tag{display:none}
+@media(max-width:520px){
+  header.shrunk .brand img{width:44px; height:44px}
+}
 </style>
 </head>
 <body>
@@ -562,15 +623,29 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg><span>479.366.1369</span></a>
+    <button class="navtoggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Main menu" hidden>
+    <div class="wrap">
+      <a href="#plans">Plans &amp; pricing</a>
+      <a href="#estimator">Price estimate</a>
+      <a href="#included">What's included</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text</a>
+    </div>
+  </nav>
 </header>
 
 <!-- ============ HERO ============ -->
 <section class="hero on-dark" id="top">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <span class="eyebrow">Servicing Centerton, Bentonville, &amp; Rogers</span>
-      <span class="hero-badge"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg>Licensed &amp; Insured</span>
+      <div class="hero-meta">
+        <span class="eyebrow">Servicing Centerton, Bentonville, &amp; Rogers</span>
+        <span class="hero-badge"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg>Licensed &amp; Insured</span>
+      </div>
       <h1>We scoop<em>so you don't.</em></h1>
       <p class="lede">We clean your yard on the same day every week, every two weeks, or once a month. We take the waste with us. You don't need to be home.</p>
       <ul class="svc-list">
@@ -579,19 +654,14 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
         <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Odor eliminator applied in yard areas</li>
       </ul>
       <div class="hero-cta">
-        <a class="btn btn-ghost" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
-      </div>
-      <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary odor eliminator</span>
-        <span class="chip"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>We haul the waste away</span>
-        <span class="chip"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Plans from $20 a visit</span>
+        <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ PLANS ============ -->
-<section class="sec sec-dark" id="plans">
+<section class="sec plans-sec" id="plans">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">Plans &amp; pricing</span>
@@ -607,8 +677,6 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
           <div class="plan-price"><b>$20</b><span>per visit</span></div>
           <p class="plan-month">$80 a month &middot; 4 visits</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Never more than 7 days of buildup</li>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>+$5 per visit for each extra dog</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
           </ul>
           <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg>Complimentary Odor Eliminator</p>
@@ -625,13 +693,11 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
           <p class="plan-month">$60 a month &middot; 2 visits</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Good for one or two dogs</li>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>+$5 per visit for each extra dog</li>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Keeps the yard under control</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one or two dogs</li>
           </ul>
           <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg>Complimentary Odor Eliminator</p>
           <p class="plan-first">Plus a one-time initial cleanup, from $50</p>
-          <a class="btn btn-pine" href="tel:+14793661369">Start bi-weekly</a>
+          <a class="btn btn-gold" href="tel:+14793661369">Start bi-weekly</a>
         </div>
       </div>
 
@@ -643,8 +709,6 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
           <div class="plan-price"><b>$40</b><span>per visit</span></div>
           <p class="plan-month">$40 a month &middot; 1 visit</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>One big clean-up each month</li>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>+$5 per visit for each extra dog</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a big yard</li>
           </ul>
           <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg>Complimentary Odor Eliminator</p>
@@ -654,6 +718,7 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
       </div>
 
     </div>
+    <p class="plans-note">Every plan adds $5 per visit for each extra dog.</p>
   </div>
 </section>
 
@@ -780,7 +845,7 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg></span>
-        <h4>We latch the gate</h4>
+        <h4>We latch the gate &amp; send you a text</h4>
         <p>We check it every time. You get a text when we're done, so you know the yard is safe.</p>
       </div>
     </div>
@@ -810,7 +875,7 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
       </div>
       <div class="q">
         <button type="button" aria-expanded="false" aria-controls="a3">Where does the waste actually go?</button>
-        <div class="a" id="a3" role="region"><p>It leaves with us and is disposed of properly.</p></div>
+        <div class="a" id="a3" role="region"><p>It leaves with us. Nothing sits in your trash can waiting for pickup day.</p></div>
       </div>
       <div class="q">
         <button type="button" aria-expanded="false" aria-controls="a4">What happens if it rains on my day?</button>
@@ -1011,6 +1076,24 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
   } else {
     Array.prototype.forEach.call(rv, function(n){ n.classList.add('in'); });
   }
+
+  /* ---------- mobile menu ---------- */
+  var navToggle = el('navToggle'), mobileNav = el('mobileNav');
+  function setNav(open){
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mobileNav.hidden = !open;
+  }
+  navToggle.addEventListener('click', function(){ setNav(mobileNav.hidden); });
+  mobileNav.addEventListener('click', function(ev){ if (ev.target.closest('a')) setNav(false); });
+  document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape' || ev.key === 'Esc') setNav(false); });
+  window.addEventListener('resize', function(){ if (window.innerWidth > 900) setNav(false); });
+
+  /* ---------- header shrinks after the first scroll ---------- */
+  var hdr = document.querySelector('header');
+  function sizeHeader(){ hdr.classList.toggle('shrunk', window.scrollY > 60); }
+  window.addEventListener('scroll', sizeHeader, { passive:true });
+  sizeHeader();
 
   el('yr').textContent = new Date().getFullYear();
 })();
