@@ -51,6 +51,10 @@ body{
 h1,h2{font-family:'Zilla Slab','Bitter',Georgia,'Times New Roman',serif; font-weight:700; line-height:1.06; margin:0; letter-spacing:-.015em}
 h3,h4{font-family:'Zilla Slab','Bitter',Georgia,'Times New Roman',serif; font-weight:700; line-height:1.2; margin:0; letter-spacing:0}
 p{margin:0}
+
+/* stop single-word last lines: headings balance, body copy avoids orphans */
+h1,h2,h3,h4,.eyebrow,.hero-badge,.plan-basis,.plans-hint,.q > button,.mobile-nav a,.foot-links a{text-wrap:balance}
+p,li,.lede,.plan-extra,.plan-first,.plan-bonus,.dog-max{text-wrap:pretty}
 a{color:inherit}
 img{max-width:100%; display:block}
 button{font:inherit; color:inherit; cursor:pointer}
@@ -183,9 +187,21 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .hero-lockup{
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:1rem; margin:0 auto 1.7rem; max-width:100%;
-  background:var(--pine-deep); border:1px solid rgba(214,176,90,.38);
-  border-radius:22px; padding:2.1rem 2.6rem 1.9rem;
-  box-shadow:0 18px 44px -26px rgba(0,0,0,.75);
+  position:relative; isolation:isolate;
+  /* frosted layer: the hero texture carries through, so it reads as depth not a box */
+  background:linear-gradient(158deg, rgba(22,62,45,.72), rgba(9,30,22,.58));
+  -webkit-backdrop-filter:blur(18px) saturate(118%);
+  backdrop-filter:blur(18px) saturate(118%);
+  border:1px solid rgba(251,247,239,.13);
+  border-radius:30px; padding:2.5rem 2.9rem 2.1rem;
+  box-shadow:0 34px 70px -34px rgba(0,0,0,.9), inset 0 1px 0 rgba(251,247,239,.09);
+}
+/* soft spotlight so the mark sits in light rather than on a slab */
+.hero-lockup::before{
+  content:''; position:absolute; z-index:-1; left:50%; top:6%;
+  width:min(430px,88%); aspect-ratio:1; transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(214,176,90,.22), rgba(214,176,90,0) 62%);
+  pointer-events:none;
 }
 .hero-lockup .logo-mark{width:clamp(148px,21vw,224px); height:clamp(148px,21vw,224px); flex:none}
 .hero-lockup .brand-txt{text-align:center; align-items:center}
@@ -193,13 +209,13 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .hero-lockup .brand-name2{font-size:clamp(1rem,1.9vw,1.45rem); line-height:1.1; margin-top:5px}
 .hero-lockup .brand-tag{font-size:clamp(13px,1.55vw,17.5px); margin-top:9px}
 @media(max-width:430px){
-  .hero-lockup{gap:.8rem; padding:1.5rem 1.6rem 1.35rem; border-radius:18px}
+  .hero-lockup{gap:.8rem; padding:1.7rem 1.5rem 1.5rem; border-radius:24px}
   .hero-lockup .logo-mark{width:138px; height:138px}
 }
 .hero-meta{
   display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
   gap:.7rem 1.1rem; width:100%; margin-top:.35rem; padding-top:1.15rem;
-  border-top:1px solid rgba(214,176,90,.28);
+  border-top:1px solid rgba(251,247,239,.14);
 }
 .svc-list{
   list-style:none; padding:0; margin:1.7rem auto 0; display:flex;
@@ -287,10 +303,6 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   display:flex; flex-direction:column;
 }
 .plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg)}
-@media(max-width:900px){
-  .plan-featured{transform:none}
-  .plan-featured:hover{transform:translateY(-5px)}
-}
 .plan-pad{padding:1.9rem 1.7rem; display:flex; flex-direction:column; flex:1; text-align:center}
 .plan h3{font-size:1.7rem; color:var(--pine)}
 .plan-rec{
@@ -314,9 +326,9 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
   background:transparent; border:1px dashed rgba(19,57,42,.35); border-radius:10px;
 }
 .plan-first + .btn{margin-top:.85rem}
-.plan ul{list-style:none; padding:1.35rem 0 0; margin:1.35rem 0 0; border-top:1px solid var(--line); display:grid; gap:.65rem; align-content:start; flex:1}
+.plan ul{list-style:none; padding:1.1rem 0 0; margin:1.1rem 0 0; border-top:1px solid var(--line); display:grid; gap:.6rem; align-content:start}
 .plan li{display:flex; gap:.6rem; font-size:17px; line-height:1.55; align-items:center; justify-content:center; text-align:left}
-.plan li svg{width:18px; height:18px; flex:none; margin-top:3px; color:var(--gold-deep)}
+.plan li svg{width:18px; height:18px; flex:none; margin-top:3px; color:var(--pine)}
 /* bonus service — deliberately unlike the cleanup-fee callout below it */
 .plan-bonus{
   display:flex; align-items:center; justify-content:center; gap:.6rem;
@@ -341,9 +353,9 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
 .plans-cta{display:flex; justify-content:center; margin-top:2.2rem}
 .plans-cta .btn{min-width:min(340px,100%)}
 /* small screens: cards swipe horizontally so they can still be compared */
-.plans-hint{display:none; text-align:center; font-size:15.5px; color:var(--muted); margin:0 0 1rem}
+.plans-hint{display:none; text-align:center; font-size:18.5px; font-weight:700; color:var(--pine); margin:0 0 1.1rem}
 .swipe-arrow{
-  display:inline-block; font-size:1.15em; color:var(--gold-deep);
+  display:inline-block; font-size:1.3em; color:var(--gold-deep);
   animation:swipeNudge 1.9s ease-in-out infinite;
 }
 @keyframes swipeNudge{
@@ -361,8 +373,8 @@ nav a:hover{color:var(--gold); border-color:var(--gold)}
     -webkit-mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,64px)), transparent 100%);
     mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,64px)), transparent 100%);
   }
-  .plans > .plan{scroll-snap-align:center}
-  .plan-featured, .plan-featured:hover{transform:none}
+  .plans > .plan{scroll-snap-align:center; box-shadow:none}
+  .plan:hover{transform:none; box-shadow:none}
   .plans-hint{display:block}
 }
 
@@ -619,7 +631,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     <div class="sec-head rv">
       <h2>Plans &amp; pricing</h2>
     </div>
-    <p class="plans-hint">Swipe to compare plans <span class="swipe-arrow" aria-hidden="true">&rarr;</span></p>
+    <p class="plans-hint">Swipe to compare plans&nbsp;<span class="swipe-arrow" aria-hidden="true">&rarr;</span></p>
     <div class="plans">
 
       <div class="plan plan-value rv">
@@ -632,11 +644,11 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
           </ul>
           <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Initial cleanup required, starting at $50</p>
+          <p class="plan-first">Initial cleanup required, starting at&nbsp;$50</p>
         </div>
       </div>
 
-      <div class="plan plan-featured rv">
+      <div class="plan rv">
         <div class="plan-pad">
           <h3>Every 2 weeks <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
@@ -646,7 +658,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one or two dogs</li>
           </ul>
           <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Initial cleanup required, starting at $50</p>
+          <p class="plan-first">Initial cleanup required, starting at&nbsp;$50</p>
         </div>
       </div>
 
@@ -660,7 +672,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a big yard</li>
           </ul>
           <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Initial cleanup required, starting at $50</p>
+          <p class="plan-first">Initial cleanup required, starting at&nbsp;$50</p>
         </div>
       </div>
 
@@ -696,12 +708,12 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         <h4>We pick up the whole yard</h4>
       </div>
       <div class="incl-card rv">
-        <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg></span>
-        <h4>We take the waste with us</h4>
+        <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg></span>
+        <h4>We apply complimentary odor eliminator</h4>
       </div>
       <div class="incl-card rv">
-        <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg></span>
-        <h4>Apply complimentary odor eliminator</h4>
+        <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg></span>
+        <h4>We take the waste with us</h4>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg></span>
