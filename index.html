@@ -219,6 +219,8 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   border-top:1px solid rgba(251,247,239,.14);
 }
 .hero-meta .eyebrow{line-height:1.5}
+.svc-title{color:var(--gold); margin:2rem 0 0}
+.svc-title + .svc-list{margin-top:.95rem}
 .svc-list{
   list-style:none; padding:0; margin:1.7rem auto 0; display:flex;
   flex-wrap:wrap; justify-content:center; gap:.7rem; max-width:880px;
@@ -558,6 +560,7 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 .js .hero-copy > *:nth-child(3){animation-delay:.24s}
 .js .hero-copy > *:nth-child(4){animation-delay:.32s}
 .js .hero-copy > *:nth-child(5){animation-delay:.40s}
+.js .hero-copy > *:nth-child(6){animation-delay:.48s}
 
 /* service bubbles respond to the cursor */
 .svc-list li{transition:transform .25s cubic-bezier(.22,.68,.24,1), border-color .25s ease, background .25s ease}
@@ -651,10 +654,11 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </div>
       <h1>We scoop <em>so you don't.</em></h1>
       <p class="lede">We clean your yard on the same day every week, every two weeks, or once a month &mdash; and you never need to be home.</p>
+      <p class="eyebrow svc-title">Services</p>
       <ul class="svc-list">
         <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Remove all dog waste</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Odor eliminator applied in yard&nbsp;areas</li>
         <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dispose of waste properly</li>
-        <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Odor eliminator applied in yard areas</li>
       </ul>
       <div class="hero-cta">
         <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text to schedule</a>
