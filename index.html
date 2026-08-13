@@ -183,6 +183,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 @media(max-width:900px){
   .hero-in{grid-template-columns:1fr; gap:2.1rem; padding:3.1rem 0 3.5rem; justify-items:center}
   .hero-copy{align-items:center; text-align:center}
+  .hero .hero-copy h1{font-size:clamp(2.1rem,7.2vw,3.4rem)}
   /* these base rules are declared further down, so match their specificity */
   .hero-in .hero-lockup{margin-inline:auto}
   .hero-copy .svc-title{align-self:center}
@@ -190,7 +191,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   .hero-copy .hero-cta{justify-content:center}
 }
 .hero h1{
-  font-size:clamp(1.85rem,4.6vw,3.9rem); color:var(--paper); margin:.2rem 0 .9rem;
+  font-size:clamp(2.1rem,4.6vw,3.9rem); color:var(--paper); margin:.2rem 0 .9rem;
 }
 .hero h1 em{font-style:normal; color:var(--gold); display:inline}
 .hero .eyebrow{color:var(--gold)}
@@ -238,8 +239,12 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .brand-tag svg{width:1.05em; height:1.05em; flex:none; color:var(--gold)}
 .foot-brand .brand-tag{justify-content:flex-start}
 @media(max-width:430px){
-  .hero-lockup{gap:.8rem; padding:1.7rem 1.5rem 1.5rem; border-radius:24px}
-  .hero-lockup .logo-mark{width:138px; height:138px}
+  .hero-lockup{gap:.85rem; padding:1.8rem 1.25rem 1.6rem; border-radius:24px}
+  .hero-lockup .logo-mark{width:172px; height:172px}
+  .hero-lockup .brand-txt b{font-size:2.3rem}
+  .hero-lockup .brand-name2{font-size:1.22rem}
+  .hero-lockup .brand-tag{font-size:14.5px}
+  .hero-owner{font-size:15px}
 }
 .hero-meta{
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -343,10 +348,12 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg); border-color:rgba(214,176,90,.75)}
 .plan-pad{padding:1.9rem 1.7rem; display:flex; flex-direction:column; flex:1; text-align:center}
 .plan h3{font-size:1.7rem; color:var(--pine)}
+.plan-name{white-space:nowrap}
 .plan-rec{
-  display:inline-block; font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  display:block; margin-top:.3rem;
+  font-family:'Barlow Condensed',sans-serif; font-weight:700;
   font-size:15px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--gold-deep); vertical-align:middle;
+  color:var(--gold-deep);
 }
 .plan .cadence{font-size:16px; color:var(--muted); margin-top:.2rem}
 .plan-price{display:flex; align-items:flex-end; justify-content:center; gap:.5rem; margin:1.3rem 0 .35rem}
@@ -730,7 +737,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 
       <div class="plan plan-value rv">
         <div class="plan-pad">
-          <h3>Weekly Plan <span class="plan-rec">(recurring)</span></h3>
+          <h3><span class="plan-name">Weekly Plan</span> <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$20</b><span>per visit</span></div>
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
@@ -744,7 +751,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 
       <div class="plan rv">
         <div class="plan-pad">
-          <h3>Bi-weekly Plan <span class="plan-rec">(recurring)</span></h3>
+          <h3><span class="plan-name">Bi-weekly Plan</span> <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
@@ -758,7 +765,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 
       <div class="plan plan-total rv">
         <div class="plan-pad">
-          <h3>Monthly Plan <span class="plan-rec">(recurring)</span></h3>
+          <h3><span class="plan-name">Monthly Plan</span> <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$40</b><span>per visit</span></div>
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
@@ -772,7 +779,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 
       <div class="plan plan-once rv">
         <div class="plan-pad">
-          <h3>One-Time Cleanup <span class="plan-rec">(no plan)</span></h3>
+          <h3><span class="plan-name">One-Time Cleanup</span> <span class="plan-rec">(no plan)</span></h3>
           <div class="plan-price is-range"><b>$50&ndash;$150</b></div>
           <p class="plan-basis">Pricing based on</p>
           <ul>
@@ -986,13 +993,17 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   sizeHeader();
 
   /* ---------- lockup: match the three stacked lines to one width ---------- */
-  (function fitLockup(){
-    if (!heroLockup) return;
-    var lines = [heroLockup.querySelector('b'),
-                 heroLockup.querySelector('.brand-name2'),
-                 heroLockup.querySelector('.brand-tag')].filter(Boolean);
-    if (lines.length < 2) return;
-    function fit(){
+  (function fitLockups(){
+    function fitOne(root){
+      var lines = [root.querySelector('b'),
+                   root.querySelector('.brand-name2'),
+                   root.querySelector('.brand-tag')].filter(Boolean);
+      if (lines.length < 2) return;
+
+      /* the nav lockup is collapsed until you scroll — open it just to measure */
+      var basis = root.style.flexBasis, ov = root.style.overflow, mw = root.style.maxWidth;
+      root.style.flexBasis = 'auto'; root.style.overflow = 'visible'; root.style.maxWidth = 'none';
+
       lines.forEach(function(el){ el.style.letterSpacing = ''; el.style.marginRight = ''; });
       var target = Math.max.apply(null, lines.map(function(el){
         return el.getBoundingClientRect().width;
@@ -1006,13 +1017,30 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           var cur  = parseFloat(getComputedStyle(el).letterSpacing) || 0;
           var next = cur + (target - w) / chars;
           el.style.letterSpacing = next + 'px';
-          el.style.marginRight = (-next) + 'px';   /* drop the trailing gap so it stays centred */
+          /* only pull back the trailing gap when the text ends the line */
+          el.style.marginRight = el.children.length ? '' : (-next) + 'px';
         });
       }
+
+      root.style.flexBasis = basis; root.style.overflow = ov; root.style.maxWidth = mw;
+    }
+    function fit(){
+      ['.hero-lockup', '.bar .brand', '.foot-brand'].forEach(function(sel){
+        var el = document.querySelector(sel);
+        if (el) fitOne(el);
+      });
     }
     fit();
     window.addEventListener('resize', fit);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    /* refit on any container size change, not just window resizes */
+    if (window.ResizeObserver){
+      var ro = new ResizeObserver(function(){ fit(); });
+      ['.hero-lockup', '.bar .brand', '.foot-brand'].forEach(function(sel){
+        var el = document.querySelector(sel);
+        if (el && el.parentNode) ro.observe(el.parentNode);
+      });
+    }
   })();
 
   /* ---------- plan carousel: fade whichever edge has more to show ---------- */
