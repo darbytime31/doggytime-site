@@ -233,7 +233,10 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   font-size:clamp(13px,1.55vw,17.5px); margin-top:9px;
   display:flex; align-items:center; justify-content:center; gap:.55em;
 }
-.hero-lockup .brand-tag svg{width:1.05em; height:1.05em; flex:none; color:var(--gold)}
+/* paws flank the subhead in every lockup */
+.brand-tag{display:flex; align-items:center; justify-content:flex-start; gap:.5em}
+.brand-tag svg{width:1.05em; height:1.05em; flex:none; color:var(--gold)}
+.foot-brand .brand-tag{justify-content:flex-start}
 @media(max-width:430px){
   .hero-lockup{gap:.8rem; padding:1.7rem 1.5rem 1.5rem; border-radius:24px}
   .hero-lockup .logo-mark{width:138px; height:138px}
@@ -666,7 +669,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   <div class="wrap bar">
     <a class="brand" href="#top">
       <span class="logo-mark" aria-hidden="true"></span>
-      <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag">Dog Waste Removal</span></span>
+      <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dog Waste Removal<svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
     </a>
     <nav>
       <a href="#plans">Pricing Plans</a>
@@ -880,7 +883,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     <div class="foot-grid">
       <a class="brand foot-brand" href="#top">
         <span class="logo-mark" aria-hidden="true"></span>
-        <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag">Dog Waste Removal</span></span>
+        <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dog Waste Removal<svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
       </a>
       <div class="foot-links">
         <a href="#plans">Pricing Plans</a>
