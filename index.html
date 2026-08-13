@@ -539,20 +539,20 @@ footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 
 /* ---------- reveal ---------- */
 .rv{
-  opacity:0; transform:translateY(16px); filter:blur(5px);
-  transition:opacity .7s cubic-bezier(.22,.68,.24,1), transform .7s cubic-bezier(.22,.68,.24,1), filter .7s cubic-bezier(.22,.68,.24,1);
+  opacity:0; transform:translateY(16px);
+  transition:opacity .7s cubic-bezier(.22,.68,.24,1), transform .7s cubic-bezier(.22,.68,.24,1);
 }
 .rv.in{
-  opacity:1; transform:none; filter:none;
+  opacity:1; transform:none;
   /* once revealed, hand transform back to the shorter hover timing */
-  transition:opacity .7s cubic-bezier(.22,.68,.24,1), filter .7s cubic-bezier(.22,.68,.24,1), transform .28s cubic-bezier(.22,.68,.24,1),
+  transition:opacity .7s cubic-bezier(.22,.68,.24,1), transform .28s cubic-bezier(.22,.68,.24,1),
               box-shadow .28s ease, border-color .28s ease;
 }
 
 /* hero settles in on load, one element after another */
 @keyframes riseIn{
-  from{opacity:0; transform:translateY(18px); filter:blur(6px)}
-  to{opacity:1; transform:none; filter:none}
+  from{opacity:0; transform:translateY(18px)}
+  to{opacity:1; transform:none}
 }
 .js .hero-copy > *{animation:riseIn .85s cubic-bezier(.22,.68,.24,1) both}
 .js .hero-copy > *:nth-child(1){animation-delay:.06s}
@@ -576,7 +576,7 @@ header.shrunk{box-shadow:0 12px 34px -20px rgba(0,0,0,.75)}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important}
   html{scroll-behavior:auto}
-  .rv{opacity:1; transform:none; filter:none}
+  .rv{opacity:1; transform:none}
   .js .hero-copy > *{animation:none}
 }
 /* ---------- header shrinks after the first scroll (last so it always wins) ---------- */
@@ -972,7 +972,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   /* the hero entrance is decorative — never let it leave content hidden */
   setTimeout(function(){
     Array.prototype.forEach.call(document.querySelectorAll('.hero-copy > *'), function(k){
-      k.style.animation = 'none'; k.style.opacity = '1'; k.style.filter = 'none';
+      k.style.animation = 'none'; k.style.opacity = '1';
     });
   }, 1700);
 
