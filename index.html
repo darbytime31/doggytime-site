@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Doggytime Discreet Disposal — Dog Waste Removal in Centerton, Bentonville &amp; Rogers, AR</title>
-<meta name="description" content="Dog waste removal in Centerton, Bentonville and Rogers, AR. Weekly, every 2 weeks, or monthly yard cleanups from $20 a visit, odor eliminator included. Call 479.366.1369.">
+<meta name="description" content="Dog waste removal in Centerton, Bentonville and Rogers, AR. Weekly, bi-weekly, or monthly yard cleanups from $20 a visit, odor eliminator included. Call 479.366.1369.">
 <meta property="og:title" content="Doggytime Discreet Disposal — Dog Waste Removal | Centerton, Bentonville &amp; Rogers">
 <meta property="og:description" content="Dog waste removal in Centerton, Bentonville and Rogers, AR. Every pile found and hauled off, odor eliminator included. Call 479.366.1369.">
 <meta property="og:type" content="website">
@@ -204,13 +204,6 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   border-radius:30px; padding:2.5rem 2.9rem 2.1rem;
   box-shadow:0 34px 70px -34px rgba(0,0,0,.9), inset 0 1px 0 rgba(251,247,239,.09);
 }
-/* soft spotlight so the mark sits in light rather than on a slab */
-.hero-lockup::before{
-  content:''; position:absolute; z-index:-1; left:50%; top:6%;
-  width:min(430px,88%); aspect-ratio:1; transform:translateX(-50%);
-  background:radial-gradient(circle, rgba(214,176,90,.22), rgba(214,176,90,0) 62%);
-  pointer-events:none;
-}
 .hero-lockup .logo-mark{width:clamp(148px,21vw,224px); height:clamp(148px,21vw,224px); flex:none}
 .hero-lockup .brand-txt{text-align:center; align-items:center}
 .hero-lockup .brand-txt b{font-size:clamp(1.9rem,3.9vw,2.85rem); line-height:1}
@@ -221,10 +214,11 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   .hero-lockup .logo-mark{width:138px; height:138px}
 }
 .hero-meta{
-  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
-  gap:.7rem 1.1rem; width:100%; margin-top:.35rem; padding-top:1.15rem;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:.85rem; width:100%; margin-top:.35rem; padding-top:1.25rem;
   border-top:1px solid rgba(251,247,239,.14);
 }
+.hero-meta .eyebrow{line-height:1.5}
 .svc-list{
   list-style:none; padding:0; margin:1.7rem auto 0; display:flex;
   flex-wrap:wrap; justify-content:center; gap:.7rem; max-width:880px;
@@ -383,6 +377,8 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
     mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,64px)), transparent 100%);
   }
   .plans > .plan{scroll-snap-align:center; box-shadow:none}
+  .plan-pad{padding:1.6rem 1.25rem}
+  .plan-first{font-size:15px; padding:.65rem .55rem}
   .plan:hover{transform:none; box-shadow:none}
   .plans-hint{display:block}
 }
@@ -622,7 +618,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag">Dog Waste Removal</span></span>
     </a>
     <nav>
-      <a href="#plans">Plans &amp; pricing</a>
+      <a href="#plans">Pricing</a>
       <a href="#included">What's included</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -633,7 +629,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   </div>
   <nav class="mobile-nav" id="mobileNav" aria-label="Main menu" hidden>
     <div class="wrap">
-      <a href="#plans">Plans &amp; pricing</a>
+      <a href="#plans">Pricing</a>
       <a href="#included">What's included</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>Call or text</a>
@@ -671,7 +667,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 <section class="sec plans-sec" id="plans">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Plans &amp; pricing</h2>
+      <h2>Pricing</h2>
     </div>
     <p class="plans-hint">Swipe to compare plans&nbsp;<span class="swipe-arrow" aria-hidden="true">&rarr;</span></p>
     <div class="plans">
@@ -685,22 +681,22 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Initial cleanup required, starting at&nbsp;$50</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor&nbsp;Eliminator</p>
+          <p class="plan-first">Initial cleanup&nbsp;required, starting at&nbsp;$50</p>
         </div>
       </div>
 
       <div class="plan rv">
         <div class="plan-pad">
-          <h3>Every 2 weeks <span class="plan-rec">(recurring)</span></h3>
+          <h3>Bi-weekly <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one or two dogs</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Initial cleanup required, starting at&nbsp;$50</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor&nbsp;Eliminator</p>
+          <p class="plan-first">Initial cleanup&nbsp;required, starting at&nbsp;$50</p>
         </div>
       </div>
 
@@ -711,10 +707,10 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a big yard</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a&nbsp;big yard</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor Eliminator</p>
-          <p class="plan-first">Initial cleanup required, starting at&nbsp;$50</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Odor&nbsp;Eliminator</p>
+          <p class="plan-first">Initial cleanup&nbsp;required, starting at&nbsp;$50</p>
         </div>
       </div>
 
@@ -747,7 +743,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     <div class="incl-grid">
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-search"/></svg></span>
-        <h4>We pick up the whole yard</h4>
+        <h4>We pick up the&nbsp;whole yard</h4>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-spray"/></svg></span>
@@ -755,7 +751,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg></span>
-        <h4>We take the waste with us</h4>
+        <h4>We take the&nbsp;waste with us</h4>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg></span>
@@ -787,11 +783,11 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         <div class="a" id="a2" role="region"><p>That's fine, we don't mind the company. If your dog would rather not meet a stranger, bring them inside and we'll work around it.</p></div>
       </div>
       <div class="q">
-        <button type="button" aria-expanded="false" aria-controls="a3">Where does the waste actually go?</button>
+        <button type="button" aria-expanded="false" aria-controls="a3">Where does the&nbsp;waste actually go?</button>
         <div class="a" id="a3" role="region"><p>It leaves with us. Nothing sits in your trash can waiting for pickup day.</p></div>
       </div>
       <div class="q">
-        <button type="button" aria-expanded="false" aria-controls="a4">What happens if it rains on my day?</button>
+        <button type="button" aria-expanded="false" aria-controls="a4">What happens if it&nbsp;rains on my day?</button>
         <div class="a" id="a4" role="region"><p>We come the next day we can work safely. You're never charged for a visit we missed.</p></div>
       </div>
       <div class="q">
@@ -809,7 +805,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 <!-- ============ FINAL CTA ============ -->
 <section class="sec cta">
   <div class="wrap">
-    <h2>Get your yard back this week.</h2>
+    <h2>Get your yard&nbsp;back this week.</h2>
     <a class="tel" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>479.366.1369</a>
   </div>
 </section>
@@ -822,7 +818,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag">Dog Waste Removal</span></span>
       </a>
       <div class="foot-links">
-        <a href="#plans">Plans</a>
+        <a href="#plans">Pricing</a>
         <a href="#included">What's included</a>
         <a href="#faq">FAQ</a>
       </div>
