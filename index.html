@@ -176,16 +176,17 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero-in{
   position:relative; z-index:2; display:grid;
   grid-template-columns:minmax(300px,.88fr) 1.12fr; gap:3.4rem;
-  align-items:center; padding:2.7rem 0 3.1rem;
+  align-items:center; padding:4.4rem 0 4.8rem;
 }
 .hero-copy{display:flex; flex-direction:column; align-items:flex-start; text-align:left}
 @media(max-width:900px){
-  .hero-in{grid-template-columns:1fr; gap:2.1rem; padding:2rem 0 2.7rem; justify-items:center}
+  .hero-in{grid-template-columns:1fr; gap:2.1rem; padding:3.1rem 0 3.5rem; justify-items:center}
   .hero-copy{align-items:center; text-align:center}
-  .hero-lockup{margin-inline:auto}
-  .svc-title{align-self:center}
-  .svc-list{justify-content:center; margin-inline:auto; max-width:430px}
-  .hero-cta{justify-content:center}
+  /* these base rules are declared further down, so match their specificity */
+  .hero-in .hero-lockup{margin-inline:auto}
+  .hero-copy .svc-title{align-self:center}
+  .hero-copy .svc-list{align-items:center; margin-inline:auto; max-width:430px}
+  .hero-copy .hero-cta{justify-content:center}
 }
 .hero h1{
   font-size:clamp(1.85rem,4.6vw,3.9rem); color:var(--paper); margin:.2rem 0 .9rem;
@@ -213,7 +214,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 /* hero lockup — same arrangement as the footer, scaled up */
 .hero-lockup{
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:1rem; margin:0; max-width:100%;
+  gap:1rem; margin:0; max-width:100%; text-align:center;
   position:relative; isolation:isolate;
   /* frosted layer: the hero texture carries through, so it reads as depth not a box */
   background:linear-gradient(158deg, rgba(22,62,45,.72), rgba(9,30,22,.58));
@@ -242,7 +243,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .svc-title + .svc-list{margin-top:.95rem}
 .svc-list{
   list-style:none; padding:0; margin:1.7rem 0 0; display:flex;
-  flex-wrap:wrap; justify-content:flex-start; gap:.7rem;
+  flex-direction:column; align-items:flex-start; gap:.7rem;
 }
 .svc-list li{
   display:inline-flex; align-items:center; gap:.6rem; text-align:left;
@@ -539,6 +540,16 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 footer{background:#0A2118; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem; font-size:16px}
 .foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:3rem; align-items:center; padding-bottom:2.2rem; border-bottom:1px solid rgba(214,176,90,.18)}
 .foot-brand{margin-right:0}
+.foot-brand .logo-mark{width:88px; height:88px}
+.foot-brand .brand-txt b{font-size:30px}
+.foot-brand .brand-name2{font-size:19px}
+.foot-brand .brand-tag{font-size:14px; letter-spacing:.2em}
+@media(max-width:520px){
+  .foot-brand .logo-mark{width:74px; height:74px}
+  .foot-brand .brand-txt b{font-size:25px}
+  .foot-brand .brand-name2{font-size:16px}
+  .foot-brand .brand-tag{font-size:12px}
+}
 .foot-links{display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center}
 .foot-links a{
   text-decoration:none; color:rgba(251,247,239,.72); font-family:'Barlow Condensed',sans-serif;
