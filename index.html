@@ -163,6 +163,16 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero::before{
   content:''; position:absolute; inset:0; background:var(--hatch); opacity:.22;
 }
+/* nav-coloured wash that carries the header down past the middle of the lockup */
+.hero::after{
+  content:''; position:absolute; left:0; right:0; top:0; z-index:1; pointer-events:none;
+  height:var(--hero-fade, 58%);
+  background:linear-gradient(to bottom,
+    rgba(13,41,30,.97) 0%,
+    rgba(13,41,30,.88) 32%,
+    rgba(13,41,30,.55) 66%,
+    rgba(13,41,30,0) 100%);
+}
 .hero-in{
   position:relative; z-index:2; display:grid; grid-template-columns:1fr;
   align-items:start; padding:2.7rem 0 3.1rem;
@@ -975,6 +985,18 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       k.style.animation = 'none'; k.style.opacity = '1';
     });
   }, 1700);
+
+  /* stop the hero wash a little past the middle of the lockup, at any size */
+  var heroEl = document.querySelector('.hero'), lockEl = document.querySelector('.hero-lockup');
+  if (heroEl && lockEl){
+    var heroFade = function(){
+      var h = heroEl.getBoundingClientRect(), l = lockEl.getBoundingClientRect();
+      heroEl.style.setProperty('--hero-fade', Math.round((l.top - h.top) + l.height * 0.62) + 'px');
+    };
+    heroFade();
+    window.addEventListener('resize', heroFade);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(heroFade);
+  }
 
   el('yr').textContent = new Date().getFullYear();
 })();
