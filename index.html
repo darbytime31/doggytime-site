@@ -212,7 +212,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero-lockup .brand-txt b{font-size:clamp(1.9rem,3.9vw,2.85rem); line-height:1}
 .hero-lockup .brand-name2{font-size:clamp(1rem,1.9vw,1.45rem); line-height:1.1; margin-top:5px}
 .hero-lockup .brand-tag{
-  font-size:clamp(13px,1.55vw,17.5px); margin-top:9px;
+  font-size:clamp(15px,1.9vw,21px); margin-top:9px;
   display:flex; align-items:center; justify-content:space-between; gap:.55em;
 }
 /* paws flank the subhead in every lockup */
@@ -355,7 +355,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .plans-cta .btn{min-width:min(340px,100%)}
 /* animatable custom properties so the scroller's edge fades ease in and out */
 @property --fade-l{syntax:'<length>'; inherits:false; initial-value:0px}
-@property --fade-r{syntax:'<length>'; inherits:false; initial-value:64px}
+@property --fade-r{syntax:'<length>'; inherits:false; initial-value:24px}
 
 /* small screens: cards swipe horizontally so they can still be compared */
 .plans-hint{display:none; text-align:center; font-size:18.5px; font-weight:700; color:var(--pine); margin:0 0 1.1rem}
@@ -597,14 +597,15 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   .hero-lockup .logo-mark{width:172px; height:172px}
   .hero-lockup .brand-txt b{font-size:2.3rem}
   .hero-lockup .brand-name2{font-size:1.22rem}
-  .hero-lockup .brand-tag{font-size:14.5px}
+  .hero-lockup .brand-tag{font-size:18px}
   .hero-owner{font-size:15px}
 }
 
 @media(max-width:560px){
   .svc-list{gap:.6rem}
-  .svc-list li{font-size:16px; padding:.7rem .95rem; gap:.5rem}
-  .svc-list svg{width:19px; height:19px}
+  /* sized so the longest service still fits on one line */
+  .svc-list li{font-size:15px; padding:.7rem .78rem; gap:.45rem}
+  .svc-list svg{width:18px; height:18px}
 }
 
 @media(max-width:640px){.owner-in{flex-direction:column; text-align:center; gap:.7rem; padding:2.4rem 0}}
@@ -633,8 +634,8 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
     padding:12px 4px 1.4rem; margin-inline:0;
     transition:--fade-l .28s ease, --fade-r .28s ease;
-    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,64px)), transparent 100%);
-    mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,64px)), transparent 100%);
+    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,24px)), transparent 100%);
+    mask-image:linear-gradient(to right, transparent 0, #000 var(--fade-l,0px), #000 calc(100% - var(--fade-r,24px)), transparent 100%);
   }
   .plans > .plan{scroll-snap-align:center; box-shadow:none}
   .plan-pad{padding:1.6rem 1.25rem}
@@ -774,9 +775,9 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for several dogs or small yards</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Best for several dogs or small yards</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
           <p class="plan-first">Initial cleanup, starting at&nbsp;$50 (if&nbsp;applicable)</p>
         </div>
       </div>
@@ -788,9 +789,9 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one or two dogs</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Best for one or two dogs</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
           <p class="plan-first">Initial cleanup, starting at&nbsp;$50 (if&nbsp;applicable)</p>
         </div>
       </div>
@@ -802,9 +803,9 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Best for one dog or a&nbsp;big yard</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Best for one dog or a&nbsp;big yard</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
           <p class="plan-first">Initial cleanup, starting at&nbsp;$50 (if&nbsp;applicable)</p>
         </div>
       </div>
@@ -815,9 +816,9 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <div class="plan-price is-range"><b>$50&ndash;$150</b></div>
           <p class="plan-basis">Pricing based on</p>
           <ul>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Number of dogs</li>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Yard size</li>
-            <li><svg viewBox="0 0 24 24"><use href="#i-check"/></svg>Amount of waste</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Number of dogs</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Yard size</li>
+            <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Amount of waste</li>
           </ul>
         </div>
       </div>
@@ -1094,8 +1095,8 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         plansTrack.style.setProperty('--fade-r','0px');
         return;
       }
-      plansTrack.style.setProperty('--fade-l', plansTrack.scrollLeft > 4 ? '46px' : '0px');
-      plansTrack.style.setProperty('--fade-r', plansTrack.scrollLeft < max - 4 ? '64px' : '0px');
+      plansTrack.style.setProperty('--fade-l', plansTrack.scrollLeft > 4 ? '18px' : '0px');
+      plansTrack.style.setProperty('--fade-r', plansTrack.scrollLeft < max - 4 ? '24px' : '0px');
     };
     plansTrack.addEventListener('scroll', setFades, { passive:true });
     window.addEventListener('resize', setFades);
