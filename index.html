@@ -213,12 +213,11 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero-lockup .brand-name2{font-size:clamp(1rem,1.9vw,1.45rem); line-height:1.1; margin-top:5px}
 .hero-lockup .brand-tag{
   font-size:clamp(13px,1.55vw,17.5px); margin-top:9px;
-  display:flex; align-items:center; justify-content:center; gap:.55em;
+  display:flex; align-items:center; justify-content:space-between; gap:.55em;
 }
 /* paws flank the subhead in every lockup */
-.brand-tag{display:flex; align-items:center; justify-content:flex-start; gap:.5em}
+.brand-tag{display:flex; align-items:center; justify-content:space-between; gap:.5em}
 .brand-tag svg{width:1.05em; height:1.05em; flex:none; color:var(--gold)}
-.foot-brand .brand-tag{justify-content:flex-start}
 .hero-meta{
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:.85rem; width:100%; margin-top:.35rem; padding-top:1.25rem;
@@ -709,7 +708,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   <div class="wrap bar">
     <a class="brand" href="#top">
       <span class="logo-mark" aria-hidden="true"></span>
-      <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dog Waste Removal<svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
+      <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg><span class="tag-text">Dog Waste Removal</span><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
     </a>
     <nav>
       <a href="#plans">Pricing Plans</a>
@@ -736,7 +735,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   <div class="wrap hero-in">
     <div class="hero-lockup">
       <span class="logo-mark" aria-hidden="true"></span>
-      <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dog Waste Removal<svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
+      <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg><span class="tag-text">Dog Waste Removal</span><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
       <div class="hero-meta">
         <span class="eyebrow">Servicing Centerton, Bentonville, &amp; Rogers</span>
         <span class="hero-badge"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg>Licensed &amp; Insured</span>
@@ -923,7 +922,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     <div class="foot-grid">
       <a class="brand foot-brand" href="#top">
         <span class="logo-mark" aria-hidden="true"></span>
-        <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Dog Waste Removal<svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
+        <span class="brand-txt"><b>Doggytime</b><span class="brand-name2">Discreet Disposal</span><span class="brand-tag"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg><span class="tag-text">Dog Waste Removal</span><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg></span></span>
       </a>
       <div class="foot-links">
         <a href="#plans">Pricing Plans</a>
@@ -1037,23 +1036,32 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       var basis = root.style.flexBasis, ov = root.style.overflow, mw = root.style.maxWidth;
       root.style.flexBasis = 'auto'; root.style.overflow = 'visible'; root.style.maxWidth = 'none';
 
-      lines.forEach(function(el){ el.style.letterSpacing = ''; el.style.marginRight = ''; });
-      var target = Math.max.apply(null, lines.map(function(el){
-        return el.getBoundingClientRect().width;
-      }));
-      /* correct iteratively: each line may already carry its own letter-spacing */
-      for (var pass = 0; pass < 3; pass++){
-        lines.forEach(function(el){
-          var chars = (el.textContent || '').length;
-          var w = el.getBoundingClientRect().width;
-          if (!chars || w <= 0) return;
-          var cur  = parseFloat(getComputedStyle(el).letterSpacing) || 0;
-          var next = cur + (target - w) / chars;
-          el.style.letterSpacing = next + 'px';
-          /* only pull back the trailing gap when the text ends the line */
-          el.style.marginRight = el.children.length ? '' : (-next) + 'px';
-        });
+      lines.forEach(function(el){
+        el.style.letterSpacing = ''; el.style.marginRight = ''; el.style.width = '';
+      });
+      /* visible width ignores the trailing letter-space CSS adds after the last glyph */
+      function visible(el){
+        var w = el.getBoundingClientRect().width;
+        if (el.children.length) return w;                 /* subhead: paws bound both ends */
+        return w - (parseFloat(getComputedStyle(el).letterSpacing) || 0);
       }
+      var target = Math.max.apply(null, lines.map(visible));
+
+      lines.forEach(function(el){
+        if (el.children.length){
+          /* subhead: set the span outright so space-between centres the text */
+          el.style.width = target + 'px';
+          return;
+        }
+        var gaps = (el.textContent || '').length - 1;
+        if (gaps < 1) return;
+        for (var pass = 0; pass < 3; pass++){
+          var cur = parseFloat(getComputedStyle(el).letterSpacing) || 0;
+          var next = cur + (target - visible(el)) / gaps;
+          el.style.letterSpacing = next + 'px';
+          el.style.marginRight = (-next) + 'px';          /* drop the trailing gap */
+        }
+      });
 
       root.style.flexBasis = basis; root.style.overflow = ov; root.style.maxWidth = mw;
     }
