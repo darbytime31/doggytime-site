@@ -109,7 +109,7 @@ header{
 .brand-txt{display:flex; flex-direction:column; line-height:1}
 .brand-txt b{font-family:'Zilla Slab',serif; text-transform:uppercase; font-size:21px; line-height:1; color:var(--paper); letter-spacing:.01em; white-space:nowrap}
 .brand-name2{font-family:'Zilla Slab',serif; text-transform:uppercase; font-weight:700; font-size:13.5px; line-height:1.1; color:var(--paper); white-space:nowrap; margin-top:3px}
-.brand-tag{white-space:nowrap; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:.16em; color:var(--gold); text-transform:uppercase; margin-top:4px}
+.brand-tag{white-space:nowrap; font-family:'Barlow Condensed',sans-serif; font-size:11px; --tag-ls:.16em; letter-spacing:var(--tag-ls); color:var(--gold); text-transform:uppercase; margin-top:4px}
 nav{display:flex; gap:1rem}
 nav a{
   font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:16px; letter-spacing:.06em;
@@ -232,6 +232,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 /* paws flank the subhead in every lockup */
 .brand-tag{display:flex; align-items:center; justify-content:space-between; gap:.5em}
 .brand-tag svg{width:1.05em; height:1.05em; flex:none; color:var(--gold)}
+.brand-tag .tag-text{margin-right:calc(-1 * var(--tag-ls))}
 .hero-meta{
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:.85rem; width:100%; margin-top:.35rem; padding-top:1.25rem;
@@ -524,7 +525,7 @@ footer{background:#061710; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 .foot-brand .logo-mark{width:88px; height:88px}
 .foot-brand .brand-txt b{font-size:30px}
 .foot-brand .brand-name2{font-size:19px}
-.foot-brand .brand-tag{font-size:14px; letter-spacing:.2em}
+.foot-brand .brand-tag{font-size:14px; --tag-ls:.2em}
 .foot-links{display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center}
 .foot-links a{
   text-decoration:none; color:rgba(251,247,239,.72); font-family:'Barlow Condensed',sans-serif;
@@ -610,7 +611,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   .bar .btn{width:48px; height:48px; padding:0; border-radius:50%; flex:none}
   .brand-txt b{font-size:18px}
   .brand .logo-mark{width:48px; height:48px} .brand-name2{font-size:12px}
-  .brand-tag{font-size:10px; letter-spacing:.12em}}
+  .brand-tag{font-size:10px; --tag-ls:.12em}}
 
 @media(max-width:900px){
   .hero-in{grid-template-columns:1fr; gap:2.1rem; padding:3.1rem 0 3.5rem; justify-items:center}
