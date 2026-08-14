@@ -11,6 +11,8 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#13392A">
 <link rel="icon" type="image/png" href="favicon.png">
+<!-- the mark is a CSS background, so the browser would not find it until the stylesheet parses -->
+<link rel="preload" as="image" href="logo.png" fetchpriority="high">
 <script>document.documentElement.className+=' js';</script>
 <style>
 /* Brand typefaces embedded — no external requests, renders identically offline */
@@ -27,7 +29,7 @@
   --pine-deep:#092015;
   --field:#2C4230;
   --field-lite:#364E38;
-  --gold:#C08532;
+  --gold:#D9AC6D;
   --gold-deep:#7A5420;
   --wheat:#F2DFB6;
   --mint:#DDEFE3;
@@ -82,7 +84,7 @@ button{font:inherit; color:inherit; cursor:pointer}
 }
 .btn svg{width:1.05em; height:1.05em; flex:none}
 .btn-gold{background:var(--gold); color:var(--pine-deep); box-shadow:0 6px 18px -8px rgba(122,84,32,.8)}
-.btn-gold:hover{transform:translateY(-2px); background:#E2C070}
+.btn-gold:hover{transform:translateY(-2px); background:#F1C17D}
 .btn-ghost{border-color:rgba(251,247,239,.4); color:var(--paper)}
 .btn-ghost:hover{border-color:var(--gold); color:var(--gold); transform:translateY(-2px)}
 .btn-pine{background:var(--pine); color:var(--paper)}
@@ -95,7 +97,7 @@ button{font:inherit; color:inherit; cursor:pointer}
 /* ---------- header ---------- */
 header{
   position:sticky; top:0; z-index:60; background:rgba(9,32,21,.94);
-  backdrop-filter:blur(10px); border-bottom:1px solid rgba(192,133,50,.22);
+  backdrop-filter:blur(10px); border-bottom:1px solid rgba(217,172,109,.22);
 }
 .bar{display:flex; align-items:center; justify-content:center; gap:1.5rem; padding:.55rem 0; transition:padding .22s ease}
 .logo-mark{background:url(logo.png) center/contain no-repeat; display:block}
@@ -135,7 +137,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 .navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-nav{background:var(--pine-deep); border-top:1px solid rgba(192,133,50,.3); padding:.6rem 0 1.3rem}
+.mobile-nav{background:var(--pine-deep); border-top:1px solid rgba(217,172,109,.3); padding:.6rem 0 1.3rem}
 .mobile-nav[hidden]{display:none}
 .mobile-nav .wrap{display:grid}
 .mobile-nav a{
@@ -177,10 +179,10 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero h1 em{font-style:normal; color:var(--gold); display:inline}
 .hero .eyebrow{color:var(--gold)}
 .hero-cta{display:flex; flex-wrap:wrap; justify-content:flex-start; gap:.85rem; margin-top:1.7rem}
-.chips{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-top:1.8rem; padding-top:1.4rem; border-top:1px solid rgba(192,133,50,.26)}
+.chips{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-top:1.8rem; padding-top:1.4rem; border-top:1px solid rgba(217,172,109,.26)}
 .chip{
   display:inline-flex; align-items:center; gap:.45rem; font-size:16.5px; line-height:1.25;
-  color:rgba(251,247,239,.86); background:rgba(251,247,239,.07); border:1px solid rgba(192,133,50,.28);
+  color:rgba(251,247,239,.86); background:rgba(251,247,239,.07); border:1px solid rgba(217,172,109,.28);
   padding:.5rem .8rem; border-radius:999px;
 }
 .chip svg{width:16px; height:16px; flex:none; color:var(--gold)}
@@ -189,7 +191,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero-badge{
   display:inline-flex; align-items:center; gap:.5rem;
   padding:.5rem .95rem; border-radius:999px;
-  background:rgba(192,133,50,.16); border:1px solid var(--gold);
+  background:rgba(217,172,109,.16); border:1px solid var(--gold);
   font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:16.5px;
   letter-spacing:.12em; text-transform:uppercase; color:var(--gold); line-height:1;
 }
@@ -225,9 +227,13 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 }
 .hero-meta .eyebrow{line-height:1.5}
 .hero-owner{
+  position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:.45rem;
+  padding:.3rem .8rem; border-radius:999px;
+  background:rgba(217,172,109,.12); border:1px solid rgba(217,172,109,.45);
   font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:16px;
-  letter-spacing:.16em; text-transform:uppercase; color:rgba(251,247,239,.92);
+  letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
 }
+.hero-owner svg{width:15px; height:15px; flex:none}
 .svc-title{color:var(--gold); margin:1.8rem 0 0; align-self:flex-start; font-size:21px; letter-spacing:.2em}
 .svc-title + .svc-list{margin-top:.95rem}
 .svc-list{
@@ -237,7 +243,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .svc-list li{
   display:inline-flex; align-items:center; gap:.6rem; text-align:left;
   padding:.75rem 1.15rem; border-radius:999px; font-size:17px; line-height:1.3;
-  background:rgba(251,247,239,.07); border:1px solid rgba(192,133,50,.32);
+  background:rgba(251,247,239,.07); border:1px solid rgba(217,172,109,.32);
   color:rgba(251,247,239,.96);
 }
 .svc-list svg{width:21px; height:21px; flex:none; color:var(--gold)}
@@ -299,11 +305,11 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .plans{display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; align-items:stretch}
 .plan{
   background:#fff; color:var(--ink); border-radius:var(--r); overflow:hidden;
-  border:1px solid rgba(192,133,50,.45); box-shadow:var(--shadow);
+  border:1px solid rgba(217,172,109,.45); box-shadow:var(--shadow);
   transition:transform .28s cubic-bezier(.22,.68,.24,1), box-shadow .28s ease, border-color .28s ease;
   display:flex; flex-direction:column;
 }
-.plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg); border-color:rgba(192,133,50,.75)}
+.plan:hover{transform:translateY(-5px); box-shadow:var(--shadow-lg); border-color:rgba(217,172,109,.75)}
 .plan-pad{padding:1.9rem 1.7rem; display:flex; flex-direction:column; flex:1; text-align:center}
 .plan h3{font-size:1.7rem; color:var(--pine)}
 .plan-name{white-space:nowrap}
@@ -343,7 +349,8 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .plan-bonus svg{width:18px; height:18px; flex:none; color:var(--gold-deep)}
 /* shared, deliberately faint sheen */
 .btn-gold{position:relative; overflow:hidden}
-.btn-gold::after{
+.btn-gold::after,
+.hero-owner::after{
   content:''; position:absolute; top:0; bottom:0; left:0; width:30%; pointer-events:none;
   background:linear-gradient(100deg, transparent, rgba(255,255,255,.42), transparent);
   transform:translateX(-180%); animation:sheen 7s ease-in-out infinite;
@@ -395,25 +402,25 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 /* ---------- included ---------- */
 .incl-grid{display:grid; grid-template-columns:1fr; gap:1rem; max-width:720px; margin-inline:auto}
 .incl-card{
-  background:var(--pine-deep); border:1px solid rgba(192,133,50,.45);
+  background:var(--pine-deep); border:1px solid rgba(217,172,109,.45);
   border-radius:var(--r); padding:1.35rem 1.6rem; transition:border-color .2s ease, transform .2s ease;
   display:flex; align-items:center; gap:1.2rem;
 }
-.incl-card:hover{border-color:rgba(192,133,50,.55); transform:translateY(-3px)}
-.incl-ic{width:42px; height:42px; border-radius:11px; background:rgba(192,133,50,.24);
-  border:1px solid rgba(192,133,50,.6); display:grid; place-items:center; flex:none}
+.incl-card:hover{border-color:rgba(217,172,109,.55); transform:translateY(-3px)}
+.incl-ic{width:42px; height:42px; border-radius:11px; background:rgba(217,172,109,.24);
+  border:1px solid rgba(217,172,109,.6); display:grid; place-items:center; flex:none}
 .incl-ic svg{width:19px; height:19px; color:var(--gold)}
 .incl-card h4{font-size:1.3rem; color:var(--paper); margin-bottom:0; font-family:'Zilla Slab',serif}
 .incl-card p{font-size:17px; color:rgba(251,247,239,.92); line-height:1.6}
 
 /* ---------- odor eliminator ---------- */
-.odor{background:var(--paper); border-top:1px solid rgba(192,133,50,.28)}
+.odor{background:var(--paper); border-top:1px solid rgba(217,172,109,.28)}
 .odor-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:3.5rem; align-items:start}
 .odor-lead .eyebrow{color:var(--gold-deep); display:block; margin-bottom:.9rem}
 .odor-lead h2{font-size:clamp(1.9rem,3.8vw,2.6rem); margin-bottom:1rem}
 .odor-badge{
   align-self:flex-start; display:inline-flex; align-items:center; gap:.55rem; margin-top:1.6rem;
-  background:rgba(192,133,50,.16); border:1px solid rgba(192,133,50,.5); border-radius:999px;
+  background:rgba(217,172,109,.16); border:1px solid rgba(217,172,109,.5); border-radius:999px;
   padding:.6rem 1.1rem; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:17.5px;
   letter-spacing:.09em; text-transform:uppercase; color:var(--pine); line-height:1;
 }
@@ -442,7 +449,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .area-grid{display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center}
 .towns{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem}
 .town{
-  background:#fff; border:1px solid rgba(192,133,50,.45); border-radius:var(--r);
+  background:#fff; border:1px solid rgba(217,172,109,.45); border-radius:var(--r);
   padding:1.7rem 1.5rem; text-align:center; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
 .town:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--gold)}
@@ -482,13 +489,13 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   font-family:'Zilla Slab',serif; font-weight:700; color:var(--gold);
   font-size:clamp(2rem,6vw,3.2rem); letter-spacing:-.01em; transition:color .18s, transform .18s;
 }
-.tel:hover{color:#EBCB80; transform:scale(1.02)}
+.tel:hover{color:#F1C17D; transform:scale(1.02)}
 .tel svg{width:.72em; height:.72em; flex:none}
 .cta-note{color:rgba(251,247,239,.8); font-size:16.5px}
 
 /* ---------- footer ---------- */
 footer{background:#061710; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem; font-size:16px}
-.foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:3rem; align-items:center; padding-bottom:2.2rem; border-bottom:1px solid rgba(192,133,50,.18)}
+.foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:3rem; align-items:center; padding-bottom:2.2rem; border-bottom:1px solid rgba(217,172,109,.18)}
 .foot-brand{margin-right:0}
 .foot-brand .logo-mark{width:88px; height:88px}
 .foot-brand .brand-txt b{font-size:30px}
@@ -505,7 +512,7 @@ footer{background:#061710; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 
 .area-tip{
   grid-column:1/-1; margin-top:1.1rem;
-  background:#fff; border:1px solid rgba(192,133,50,.4); border-radius:var(--r);
+  background:#fff; border:1px solid rgba(217,172,109,.4); border-radius:var(--r);
   padding:1.2rem 1.5rem; box-shadow:var(--shadow);
 }
 .area-note{
@@ -541,7 +548,7 @@ footer{background:#061710; color:rgba(251,247,239,.76); padding:3.5rem 0 2.2rem;
 
 /* service bubbles respond to the cursor */
 .svc-list li{transition:transform .25s cubic-bezier(.22,.68,.24,1), border-color .25s ease, background .25s ease}
-.svc-list li:hover{transform:translateY(-2px); border-color:rgba(192,133,50,.6); background:rgba(251,247,239,.11)}
+.svc-list li:hover{transform:translateY(-2px); border-color:rgba(217,172,109,.6); background:rgba(251,247,239,.11)}
 
 /* included rows: the icon leans in */
 .incl-ic{transition:transform .25s cubic-bezier(.22,.68,.24,1), background .25s ease}
@@ -622,7 +629,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 @media(max-width:1150px){.plans{grid-template-columns:repeat(2,1fr); gap:1.3rem}}
 
 @media(prefers-reduced-motion:reduce){
-  .btn-gold::after{display:none}
+  .btn-gold::after, .hero-owner::after{display:none}
 }
 
 @media(prefers-reduced-motion:reduce){ .swipe-arrow{animation:none; opacity:1} }
@@ -740,7 +747,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <div class="hero-meta">
         <span class="eyebrow">Servicing Centerton, Bentonville, &amp; Rogers</span>
         <span class="hero-badge"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg>Licensed &amp; Insured</span>
-          <span class="hero-owner">Owner Operator</span>
+          <span class="hero-owner"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Owner Operator</span>
       </div>
     </div>
     <div class="hero-copy">
@@ -766,9 +773,9 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <h2>Pricing Plans</h2>
     </div>
     <p class="plans-hint">Swipe to compare plans&nbsp;<span class="swipe-arrow" aria-hidden="true">&rarr;</span></p>
-    <div class="plans">
+    <div class="plans rv">
 
-      <div class="plan plan-value rv">
+      <div class="plan plan-value">
         <div class="plan-pad">
           <h3><span class="plan-name">Weekly Plan</span> <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$20</b><span>per visit</span></div>
@@ -782,7 +789,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         </div>
       </div>
 
-      <div class="plan rv">
+      <div class="plan">
         <div class="plan-pad">
           <h3><span class="plan-name">Bi-weekly Plan</span> <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$30</b><span>per visit</span></div>
@@ -796,7 +803,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         </div>
       </div>
 
-      <div class="plan plan-total rv">
+      <div class="plan plan-total">
         <div class="plan-pad">
           <h3><span class="plan-name">Monthly Plan</span> <span class="plan-rec">(recurring)</span></h3>
           <div class="plan-price"><b>$40</b><span>per visit</span></div>
@@ -810,7 +817,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
         </div>
       </div>
 
-      <div class="plan plan-once rv">
+      <div class="plan plan-once">
         <div class="plan-pad">
           <h3><span class="plan-name">One-Time Cleanup</span> <span class="plan-rec">(no plan)</span></h3>
           <div class="plan-price is-range"><b>$50&ndash;$150</b></div>
@@ -859,11 +866,11 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg></span>
-        <h4>We take the&nbsp;waste with us</h4>
+        <h4>We take&nbsp;the&nbsp;waste with us</h4>
       </div>
       <div class="incl-card rv">
         <span class="incl-ic"><svg viewBox="0 0 24 24"><use href="#i-lock"/></svg></span>
-        <h4>We latch the gate &amp; send you a text&nbsp;pic</h4>
+        <h4>We latch the gate &amp;&nbsp;send you a text&nbsp;pic</h4>
       </div>
     </div>
   </div>
