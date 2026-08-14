@@ -363,12 +363,12 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .plan-once li{justify-content:flex-start}
 /* bonus service — deliberately unlike the cleanup-fee callout below it */
 .plan-bonus{
-  display:flex; align-items:center; justify-content:center; gap:.6rem;
-  position:relative; overflow:hidden;
-  margin:auto 0 0; padding:.7rem 0 .1rem; text-align:left;   /* pin to the card bottom so all cards align */
+  position:relative; overflow:hidden; text-align:center;
+  margin:auto 0 0; padding:.7rem 0 .1rem;   /* pin to the card bottom so all cards align */
   color:var(--gold-deep); font-weight:700; font-size:17px; line-height:1.55;
 }
-.plan-bonus svg{width:18px; height:18px; flex:none; color:var(--gold-deep)}
+/* inline, so wrapped lines run the full width of the card instead of clearing the icon */
+.plan-bonus svg{width:18px; height:18px; color:var(--gold-deep); vertical-align:-3px; margin-right:.45rem}
 /* shared, deliberately faint sheen */
 .btn-gold{position:relative; overflow:hidden}
 .btn-gold::after{
@@ -807,7 +807,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Best for several dogs or small yards</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor Eliminator&nbsp;Included</p>
           <p class="plan-first">Initial cleanup, starting at&nbsp;$50 (if&nbsp;applicable)</p>
         </div>
       </div>
@@ -821,7 +821,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Best for one or two dogs</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor Eliminator&nbsp;Included</p>
           <p class="plan-first">Initial cleanup, starting at&nbsp;$50 (if&nbsp;applicable)</p>
         </div>
       </div>
@@ -835,7 +835,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Best for one dog or a&nbsp;big yard</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor Eliminator&nbsp;Included</p>
           <p class="plan-first">Initial cleanup, starting at&nbsp;$50 (if&nbsp;applicable)</p>
         </div>
       </div>
@@ -850,7 +850,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
             <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Yard size</li>
             <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Amount of waste</li>
           </ul>
-          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor&nbsp;Eliminator</p>
+          <p class="plan-bonus"><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Complimentary Safe Odor Eliminator&nbsp;Included</p>
         </div>
       </div>
     </div>
