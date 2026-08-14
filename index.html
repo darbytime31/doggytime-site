@@ -359,6 +359,8 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .plan ul{list-style:none; padding:1.1rem 0 0; margin:1.1rem 0 0; border-top:1px solid var(--line); display:grid; gap:.6rem; align-content:start}
 .plan li{display:flex; gap:.6rem; font-size:17px; line-height:1.55; align-items:center; justify-content:center; text-align:left}
 .plan li svg{width:18px; height:18px; flex:none; margin-top:3px; color:var(--pine)}
+.plan-once ul{flex:1; align-content:center; justify-content:center}
+.plan-once li{justify-content:flex-start}
 /* bonus service — deliberately unlike the cleanup-fee callout below it */
 .plan-bonus{
   display:flex; align-items:center; justify-content:center; gap:.6rem;
@@ -419,7 +421,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .factor p{font-size:16.5px; color:var(--muted); line-height:1.5}
 
 /* ---------- included ---------- */
-.incl-grid{display:grid; grid-template-columns:1fr; gap:1rem; max-width:720px; margin-inline:auto}
+.incl-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; max-width:900px; margin-inline:auto}
 .incl-card{
   background:var(--pine-deep); border:1px solid rgba(224,154,53,.45);
   border-radius:var(--r); padding:1.35rem 1.6rem; transition:border-color .2s ease, transform .2s ease;
@@ -774,7 +776,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
     </div>
     <div class="hero-copy">
       <h1>We scoop <em>so you don't.</em></h1>
-      <p class="lede">We discreetly clean your yard on the same day every week, every two weeks, or once a month &mdash; and you don't need to&nbsp;be home.</p>
+      <p class="lede">We discreetly clean your yard on the same day every week, every&nbsp;two&nbsp;weeks, or once a&nbsp;month &mdash; and you don't need to&nbsp;be home.</p>
       <p class="eyebrow svc-title">Services</p>
       <ul class="svc-list">
         <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Remove all dog waste</li>
@@ -962,7 +964,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <a class="btn btn-gold" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>479.366.1369</a>
     </div>
     <div class="foot-bot">
-      <span>&copy; <span id="yr">2026</span> Doggytime Discreet Disposal. All rights reserved.</span>
+      <span>&copy; <span id="yr">2026</span> Doggytime Discreet Disposal. All rights&nbsp;reserved.</span>
       <span>We scoop so you don't.</span>
     </div>
   </div>
