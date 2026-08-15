@@ -570,14 +570,23 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 
 /* ---------- final cta ---------- */
 .cta{background:var(--pine-deep); color:var(--paper); position:relative; overflow:hidden; text-align:center}
-/* underline draws itself in once the heading scrolls into view */
+/* hand-drawn underline: inks itself in once the heading scrolls into view */
 .cta-line{position:relative; display:inline-block}
-.cta-line::after{
-  content:''; position:absolute; left:0; right:0; bottom:-.1em; height:.055em; border-radius:2px;
-  background:var(--gold); transform:scaleX(0); transform-origin:left center;
-  transition:transform .75s cubic-bezier(.22,.68,.24,1) .35s;
+.cta-line .scribble{
+  position:absolute; left:-.03em; right:-.03em; bottom:-.24em; width:calc(100% + .06em);
+  height:.3em; overflow:visible; pointer-events:none;
 }
-.rv.in .cta-line::after{transform:scaleX(1)}
+.cta-line .scribble path{
+  fill:none; stroke:var(--gold); stroke-width:.052em; stroke-linecap:round;
+  vector-effect:non-scaling-stroke;
+}
+/* wiped rather than dash-drawn: the box is stretched hard in x, which throws off
+   any dash pattern measured along the path */
+.cta-line .scribble{
+  clip-path:inset(-1em 100% -1em 0);
+  transition:clip-path .85s cubic-bezier(.32,.7,.4,1) .35s;
+}
+.rv.in .cta-line .scribble{clip-path:inset(-1em -.3em -1em 0)}
 .cta::before{content:''; position:absolute; inset:0; background:var(--hatch); opacity:.18}
 .cta > .wrap{position:relative; z-index:2}
 .cta h2{font-size:clamp(2.55rem,5vw,3.3rem); color:var(--paper); margin-bottom:1rem}
@@ -1021,7 +1030,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 <!-- ============ FINAL CTA ============ -->
 <section class="sec cta">
   <div class="wrap">
-    <h2 class="rv">Get your yard&nbsp;back <span class="cta-line">this week.</span></h2>
+    <h2 class="rv">Get your yard&nbsp;back <span class="cta-line">this week.<svg class="scribble" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M2.4,7.9 C26,4.9 58,3.4 96,4.1 C134,4.8 166,6.9 197.4,4.3"/></svg></span></h2>
     <a class="tel" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>479.366.1369</a>
   </div>
 </section>
