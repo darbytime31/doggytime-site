@@ -189,6 +189,23 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   font-size:clamp(2.1rem,4.6vw,3.9rem); color:var(--paper); margin:.2rem 0 .9rem;
 }
 .hero h1 em{font-style:normal; color:var(--gold); display:inline}
+/* headline types itself: "We scoop" — beat — "so you don't." */
+.hero h1 .type-a, .hero h1 .type-b{position:relative; display:inline-block}
+.hero h1 .type-in{display:inline-block}
+.js .hero h1 .type-in{clip-path:inset(0 100% 0 -.04em)}
+.js .hero h1 .type-a .type-in{animation:typeIn .45s steps(8,end) .85s forwards}
+.js .hero h1 .type-b .type-in{animation:typeIn .65s steps(13,end) 1.65s forwards}
+@keyframes typeIn{to{clip-path:inset(0 -.12em 0 -.04em)}}
+/* caret rides the reveal edge; it sits on the unclipped wrapper so it stays visible */
+.js .hero h1 .type-a::after, .js .hero h1 .type-b::after{
+  content:''; position:absolute; top:.14em; bottom:.2em; width:.05em; border-radius:2px;
+  background:currentColor; left:0; opacity:0; pointer-events:none;
+}
+.js .hero h1 .type-a::after{animation:caretMove .45s steps(8,end) .85s forwards, caretA .8s linear .85s forwards}
+.js .hero h1 .type-b::after{animation:caretMove .65s steps(13,end) 1.65s forwards, caretB 1.8s linear 1.65s forwards}
+@keyframes caretMove{from{left:-.02em} to{left:100%}}
+@keyframes caretA{0%,56%{opacity:1} 64%{opacity:0} 78%{opacity:1} 92%{opacity:0} 100%{opacity:0}}
+@keyframes caretB{0%,36%{opacity:1} 44%{opacity:0} 58%{opacity:1} 72%{opacity:0} 86%{opacity:1} 100%{opacity:0}}
 .hero .eyebrow{color:var(--gold)}
 .hero-cta{display:flex; flex-wrap:wrap; justify-content:flex-start; gap:.85rem; margin-top:1.7rem}
 .chips{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-top:1.8rem; padding-top:1.4rem; border-top:1px solid rgba(224,154,53,.26)}
@@ -724,6 +741,8 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   html{scroll-behavior:auto}
   .rv{opacity:1; transform:none}
   .js .hero-lockup, .js .hero-copy > *{animation:none}
+  .js .hero h1 .type-in{clip-path:none}
+  .js .hero h1 .type-a::after, .js .hero h1 .type-b::after{display:none}
 }
 </style>
 </head>
@@ -785,7 +804,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </div>
     </div>
     <div class="hero-copy">
-      <h1>We scoop <em>so you don't.</em></h1>
+      <h1><span class="type-a"><span class="type-in">We scoop</span></span> <em class="type-b"><span class="type-in">so you don't.</span></em></h1>
       <p class="lede">We discreetly clean your yard on the same day every week, every&nbsp;two&nbsp;weeks, or once a&nbsp;month &mdash; and you don't need to&nbsp;be home. Professional, dependable, &amp;&nbsp;friendly.</p>
       <p class="eyebrow svc-title">Services</p>
       <ul class="svc-list">
