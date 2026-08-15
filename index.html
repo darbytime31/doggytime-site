@@ -193,19 +193,56 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .hero h1 .type-a, .hero h1 .type-b{position:relative; display:inline-block}
 .hero h1 .type-in{display:inline-block}
 .js .hero h1 .type-in{clip-path:inset(0 100% 0 -.04em)}
-.js .hero h1 .type-a .type-in{animation:typeIn .45s steps(8,end) .85s forwards}
-.js .hero h1 .type-b .type-in{animation:typeIn .65s steps(13,end) 1.65s forwards}
-@keyframes typeIn{to{clip-path:inset(0 -.12em 0 -.04em)}}
-/* caret rides the reveal edge; it sits on the unclipped wrapper so it stays visible */
+.js .hero h1 .type-a .type-in{animation:typeA 8.1s .85s infinite}
+.js .hero h1 .type-b .type-in{animation:typeB 8.1s .85s infinite}
+@keyframes typeA{
+  0%      {clip-path:inset(0 100% 0 -.04em); animation-timing-function:steps(8,end)}
+  5.556%  {clip-path:inset(0 -.12em 0 -.04em)}
+  92.593% {clip-path:inset(0 -.12em 0 -.04em); animation-timing-function:steps(8,end)}
+  97.531%,100%{clip-path:inset(0 100% 0 -.04em)}
+}
+@keyframes typeB{
+  0%,9.877%   {clip-path:inset(0 100% 0 -.04em); animation-timing-function:steps(13,end)}
+  17.901%     {clip-path:inset(0 -.12em 0 -.04em)}
+  86.420%     {clip-path:inset(0 -.12em 0 -.04em); animation-timing-function:steps(13,end)}
+  92.593%,100%{clip-path:inset(0 100% 0 -.04em)}
+}
+/* caret rides the reveal edge; it sits on the unclipped wrapper so it stays visible.
+   travel and blink are separate animations so neither one's keyframes break the
+   other's step timing */
 .js .hero h1 .type-a::after, .js .hero h1 .type-b::after{
   content:''; position:absolute; top:.14em; bottom:.2em; width:.05em; border-radius:2px;
   background:currentColor; left:0; opacity:0; pointer-events:none;
 }
-.js .hero h1 .type-a::after{animation:caretMove .45s steps(8,end) .85s forwards, caretA .8s linear .85s forwards}
-.js .hero h1 .type-b::after{animation:caretMove .65s steps(13,end) 1.65s forwards, caretB 1.8s linear 1.65s forwards}
-@keyframes caretMove{from{left:-.02em} to{left:100%}}
-@keyframes caretA{0%,56%{opacity:1} 64%{opacity:0} 78%{opacity:1} 92%{opacity:0} 100%{opacity:0}}
-@keyframes caretB{0%,36%{opacity:1} 44%{opacity:0} 58%{opacity:1} 72%{opacity:0} 86%{opacity:1} 100%{opacity:0}}
+.js .hero h1 .type-a::after{animation:caretRunA 8.1s .85s infinite, caretFadeA 8.1s .85s infinite}
+.js .hero h1 .type-b::after{animation:caretRunB 8.1s .85s infinite, caretFadeB 8.1s .85s infinite}
+@keyframes caretRunA{
+  0%      {left:-.02em; animation-timing-function:steps(8,end)}
+  5.556%  {left:100%}
+  92.593% {left:100%; animation-timing-function:steps(8,end)}
+  97.531%,100%{left:-.02em}
+}
+@keyframes caretRunB{
+  0%,9.877%   {left:-.02em; animation-timing-function:steps(13,end)}
+  17.901%     {left:100%}
+  86.420%     {left:100%; animation-timing-function:steps(13,end)}
+  92.593%,100%{left:-.02em}
+}
+@keyframes caretFadeA{
+  0%,5.556%{opacity:1}
+  6.4%{opacity:0} 7.3%{opacity:1} 8.2%{opacity:0} 9.1%{opacity:1}
+  9.877%,92.5%{opacity:0}
+  92.593%,97.531%{opacity:1}
+  97.7%,100%{opacity:0}
+}
+@keyframes caretFadeB{
+  0%,9.8%{opacity:0}
+  9.877%,17.901%{opacity:1}
+  18.8%{opacity:0} 19.7%{opacity:1} 20.6%{opacity:0} 21.5%{opacity:1}
+  22.4%,86.3%{opacity:0}
+  86.420%,92.593%{opacity:1}
+  92.7%,100%{opacity:0}
+}
 .hero .eyebrow{color:var(--gold)}
 .hero-cta{display:flex; flex-wrap:wrap; justify-content:flex-start; gap:.85rem; margin-top:1.7rem}
 .chips{display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem; margin-top:1.8rem; padding-top:1.4rem; border-top:1px solid rgba(224,154,53,.26)}
@@ -532,6 +569,14 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 
 /* ---------- final cta ---------- */
 .cta{background:var(--pine-deep); color:var(--paper); position:relative; overflow:hidden; text-align:center}
+/* underline draws itself in once the heading scrolls into view */
+.cta-line{position:relative; display:inline-block}
+.cta-line::after{
+  content:''; position:absolute; left:0; right:0; bottom:-.1em; height:.055em; border-radius:2px;
+  background:var(--gold); transform:scaleX(0); transform-origin:left center;
+  transition:transform .75s cubic-bezier(.22,.68,.24,1) .35s;
+}
+.rv.in .cta-line::after{transform:scaleX(1)}
 .cta::before{content:''; position:absolute; inset:0; background:var(--hatch); opacity:.18}
 .cta > .wrap{position:relative; z-index:2}
 .cta h2{font-size:clamp(2.55rem,5vw,3.3rem); color:var(--paper); margin-bottom:1rem}
@@ -723,7 +768,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 
 @media(max-width:420px){.towns{grid-template-columns:1fr}}
 
-@media(max-width:620px){ .cta-line{display:block} }
+@media(max-width:620px){ .cta-line{display:block; width:fit-content; margin-inline:auto} }
 
 @media(max-width:520px){
   .foot-brand .logo-mark{width:74px; height:74px}
@@ -975,7 +1020,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 <!-- ============ FINAL CTA ============ -->
 <section class="sec cta">
   <div class="wrap">
-    <h2>Get your yard&nbsp;back <span class="cta-line">this week.</span></h2>
+    <h2 class="rv">Get your yard&nbsp;back <span class="cta-line">this week.</span></h2>
     <a class="tel" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>479.366.1369</a>
   </div>
 </section>
