@@ -288,6 +288,11 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .sec-head .eyebrow{color:var(--gold-deep); display:block; margin-bottom:.9rem}
 .sec-dark .sec-head .eyebrow{color:var(--gold)}
 .sec-head h2{font-size:clamp(2.1rem,4.4vw,3rem); margin-bottom:1rem}
+.sec-head .sec-note{
+  margin:-.6rem 0 0; font-family:'Barlow Condensed',sans-serif; font-weight:700;
+  font-size:17px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-deep);
+}
+.sec-dark .sec-head .sec-note{color:var(--gold)}
 .sec-dark .sec-head h2{color:var(--paper)}
 .center{margin-inline:auto; text-align:center}
 
@@ -342,7 +347,7 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 }
 .plan .cadence{font-size:16px; color:var(--muted); margin-top:.2rem}
 .plan-price{display:flex; align-items:flex-end; justify-content:center; gap:.5rem; margin:1.3rem 0 .35rem}
-.plan-price.is-range b{font-size:2.5rem; letter-spacing:-.02em}
+.plan-price.is-tiers b{font-size:1.7rem; letter-spacing:-.01em; line-height:1.15}
 .plan-price b{font-family:'Zilla Slab',serif; font-size:3.5rem; font-weight:700; line-height:.88; color:var(--pine); letter-spacing:-.03em}
 .plan-price span{font-family:'Barlow Condensed',sans-serif; font-size:16px; letter-spacing:.12em;
   text-transform:uppercase; color:var(--muted); padding-bottom:.4rem}
@@ -771,7 +776,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <div class="hero-meta">
         <span class="eyebrow">Servicing Centerton, Bentonville, &amp; Rogers</span>
         <span class="hero-badge"><svg viewBox="0 0 24 24"><use href="#i-shield"/></svg>Licensed &amp; Insured</span>
-          <span class="hero-owner">Owner Operator</span>
+          <span class="hero-owner">Owner Operator NWA</span>
       </div>
     </div>
     <div class="hero-copy">
@@ -794,7 +799,8 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 <section class="sec plans-sec" id="plans">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Pricing Plans</h2>
+      <h2>Pricing Service Plans</h2>
+      <p class="sec-note">(No Contracts)</p>
     </div>
     <p class="plans-hint">Swipe to compare plans&nbsp;<span class="swipe-arrow" aria-hidden="true">&rarr;</span></p>
     <div class="plans rv">
@@ -830,7 +836,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <div class="plan plan-total">
         <div class="plan-pad">
           <h3><span class="plan-name">Monthly Plan</span> <span class="plan-rec">(recurring)</span></h3>
-          <div class="plan-price"><b>$40</b><span>per visit</span></div>
+          <div class="plan-price"><b>$45</b><span>per visit</span></div>
           <p class="plan-basis">For one dog</p>
           <p class="plan-extra">+ $5 per additional dog</p>
           <ul>
@@ -844,7 +850,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <div class="plan plan-once">
         <div class="plan-pad">
           <h3><span class="plan-name">One-Time Cleanup</span> <span class="plan-rec">(no plan)</span></h3>
-          <div class="plan-price is-range"><b>$50&ndash;$150</b></div>
+          <div class="plan-price is-tiers"><b>$50 / $75 / $100&nbsp;+</b></div>
           <p class="plan-basis">Pricing based on:</p>
           <ul>
             <li><svg viewBox="0 0 24 24"><use href="#i-paw"/></svg>Number of dogs</li>
@@ -916,7 +922,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </div>
       <div class="q">
         <button type="button" aria-expanded="false" aria-controls="a1">What if my gate is locked?</button>
-        <div class="a" id="a1" role="region"><p>Give us the code, or tell us where the key is. We latch the gate behind us every time.</p></div>
+        <div class="a" id="a1" role="region"><p>Give us the code, or tell us where the key is. We secure the gate behind us every time.</p></div>
       </div>
       <div class="q">
         <button type="button" aria-expanded="false" aria-controls="a2">Can my dog be outside while you work?</button>
@@ -932,7 +938,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       </div>
       <div class="q">
         <button type="button" aria-expanded="false" aria-controls="a5">Do you do one-time cleanups?</button>
-        <div class="a" id="a5" role="region"><p>One-time cleanup service from $50&ndash;$150. See pricing&nbsp;plans.</p></div>
+        <div class="a" id="a5" role="region"><p>One-time cleanup service is $50 / $75 / $100&nbsp;+. See pricing&nbsp;plans.</p></div>
       </div>
       <div class="q">
         <button type="button" aria-expanded="false" aria-controls="a6">How many dogs is too many?</button>
