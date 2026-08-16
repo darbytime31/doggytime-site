@@ -189,59 +189,31 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   font-size:clamp(2.1rem,4.6vw,3.9rem); color:var(--paper); margin:.2rem 0 .9rem;
 }
 .hero h1 em{font-style:normal; color:var(--gold); display:inline}
-/* headline types itself: "We scoop" — beat — "so you don't." */
-.hero h1 .type-a, .hero h1 .type-b{position:relative; display:inline-block}
+/* headline reveals in two beats: "We scoop" — beat — "so you don't." — then
+   the whole line wipes away left to right and the cycle starts over */
+.hero h1 .type-a, .hero h1 .type-b{display:inline-block}
 .hero h1 .type-in{display:inline-block}
-.js .hero h1 .type-in{clip-path:inset(0 100% 0 -.04em)}
-.js .hero h1 .type-a .type-in{animation:typeA 5.05s .85s infinite}
-.js .hero h1 .type-b .type-in{animation:typeB 5.05s .85s infinite}
-@keyframes typeA{
-  0%      {clip-path:inset(0 100% 0 -.04em); animation-timing-function:steps(8,end)}
-  8.911%  {clip-path:inset(0 -.12em 0 -.04em)}
-  88.119% {clip-path:inset(0 -.12em 0 -.04em); animation-timing-function:steps(8,end)}
-  96.040%,100%{clip-path:inset(0 100% 0 -.04em)}
+.js .hero h1 .type-in{opacity:0}
+.js .hero h1 .type-a .type-in{animation:showA 5.05s .85s ease infinite}
+.js .hero h1 .type-b .type-in{animation:showB 5.05s .85s ease infinite}
+/* the two spans stagger their wipe so it reads as one sweep across the line;
+   past the wipe, opacity is already 0, so the clip resets unseen before looping */
+@keyframes showA{
+  0%      {opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
+  8.911%  {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
+  78.218% {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
+  87.129% {opacity:1; clip-path:inset(0 -.12em 0 100%)}
+  87.3%   {opacity:0; clip-path:inset(0 -.12em 0 100%)}
+  87.5%,100%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
 }
-@keyframes typeB{
-  0%,15.842% {clip-path:inset(0 100% 0 -.04em); animation-timing-function:steps(13,end)}
-  28.713%    {clip-path:inset(0 -.12em 0 -.04em)}
-  78.218%    {clip-path:inset(0 -.12em 0 -.04em); animation-timing-function:steps(13,end)}
-  88.119%,100%{clip-path:inset(0 100% 0 -.04em)}
+@keyframes showB{
+  0%,15.842%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
+  28.713%   {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
+  87.129%   {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
+  96.040%   {opacity:1; clip-path:inset(0 -.12em 0 100%)}
+  96.3%     {opacity:0; clip-path:inset(0 -.12em 0 100%)}
+  96.6%,100%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
 }
-/* caret rides the reveal edge; it sits on the unclipped wrapper so it stays visible.
-   travel and blink are separate animations so neither one's keyframes break the
-   other's step timing */
-.js .hero h1 .type-a::after, .js .hero h1 .type-b::after{
-  content:''; position:absolute; top:.14em; bottom:.2em; width:.05em; border-radius:2px;
-  background:currentColor; left:0; opacity:0; pointer-events:none;
-}
-.js .hero h1 .type-a::after{animation:caretRunA 5.05s .85s infinite, caretFadeA 5.05s .85s infinite}
-.js .hero h1 .type-b::after{animation:caretRunB 5.05s .85s infinite, caretFadeB 5.05s .85s infinite}
-@keyframes caretRunA{
-  0%      {left:-.02em; animation-timing-function:steps(8,end)}
-  8.911%  {left:100%}
-  88.119% {left:100%; animation-timing-function:steps(8,end)}
-  96.040%,100%{left:-.02em}
-}
-@keyframes caretRunB{
-  0%,15.842% {left:-.02em; animation-timing-function:steps(13,end)}
-  28.713%    {left:100%}
-  78.218%    {left:100%; animation-timing-function:steps(13,end)}
-  88.119%,100%{left:-.02em}
-}
-@keyframes caretFadeA{
-  0%,8.911%{opacity:1}
-  10.3%{opacity:0} 11.7%{opacity:1} 13.1%{opacity:0} 14.7%{opacity:1}
-  15.842%,88%{opacity:0}
-  88.119%,96.040%{opacity:1}
-  96.3%,100%{opacity:0}
-}
-@keyframes caretFadeB{
-  0%,15.7%{opacity:0}
-  15.842%,28.713%{opacity:1}
-  30.1%{opacity:0} 31.6%{opacity:1} 33.1%{opacity:0} 34.5%{opacity:1}
-  35.6%,78.1%{opacity:0}
-  78.218%,88.119%{opacity:1}
-  88.3%,100%{opacity:0}
 }
 }
 .hero .eyebrow{color:var(--gold)}
@@ -798,8 +770,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
   html{scroll-behavior:auto}
   .rv{opacity:1; transform:none}
   .js .hero-lockup, .js .hero-copy > *{animation:none}
-  .js .hero h1 .type-in{clip-path:none}
-  .js .hero h1 .type-a::after, .js .hero h1 .type-b::after{display:none}
+  .js .hero h1 .type-in{clip-path:none; opacity:1; animation:none}
 }
 </style>
 </head>
