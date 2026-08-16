@@ -454,9 +454,11 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 /* small screens: cards swipe horizontally so they can still be compared */
 .plans-hint{display:none; text-align:center; font-size:18.5px; font-weight:700; color:var(--pine); margin:0 0 1.1rem}
 .swipe-arrow{
-  display:inline-block; font-size:1.3em; color:var(--gold-deep);
+  display:inline-block; font-size:1.3em; color:var(--gold-deep); vertical-align:-.18em;
   animation:swipeNudge 1.9s ease-in-out infinite;
 }
+.swipe-arrow svg{width:1.9em; height:1.05em; display:block; overflow:visible}
+.swipe-arrow svg path{fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
 @keyframes swipeNudge{
   0%,60%,100%{transform:translateX(0); opacity:.55}
   25%{transform:translateX(9px); opacity:1}
@@ -597,6 +599,22 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
   font-size:clamp(2rem,6vw,3.2rem); letter-spacing:-.01em; transition:color .18s, transform .18s;
 }
 .tel:hover{color:#F1C17D; transform:scale(1.02)}
+/* hand-drawn ring; loops round the number once the closing heading lands.
+   driven off the heading rather than .tel itself, because putting .rv on the
+   link would let .rv.in{transform:none} cancel its hover scale */
+.tel{position:relative}
+/* .tel svg sizes the phone icon and outranks a bare .tel-ring, so qualify it */
+.tel .tel-ring{
+  position:absolute; left:-.26em; top:-.17em; width:calc(100% + .52em); height:calc(100% + .34em);
+  overflow:visible; pointer-events:none;
+}
+.tel .tel-ring path{
+  fill:none; stroke:var(--gold); stroke-width:3.2; stroke-linecap:round; opacity:.85;
+  stroke-dasharray:1; stroke-dashoffset:1;
+}
+.cta h2.rv.in ~ .tel .tel-ring path{
+  stroke-dashoffset:0; transition:stroke-dashoffset .95s cubic-bezier(.4,.7,.5,1) 1.25s;
+}
 .tel svg{width:.72em; height:.72em; flex:none}
 .cta-note{color:rgba(251,247,239,.8); font-size:16.5px}
 
@@ -881,7 +899,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
       <h2>Pricing Service Plans</h2>
       <p class="sec-note">(No Contracts)</p>
     </div>
-    <p class="plans-hint">Swipe to compare plans&nbsp;<span class="swipe-arrow" aria-hidden="true">&rarr;</span></p>
+    <p class="plans-hint">Swipe to compare plans&nbsp;<span class="swipe-arrow" aria-hidden="true"><svg viewBox="0 0 44 24" focusable="false"><path d="M2.5,12.8 C12,11.3 26,10.6 39.5,11.1"/><path d="M30.5,4.4 C33.8,7.3 37.2,9.7 40.8,11.2 C37.6,13.3 34.2,15.9 31.2,19.3"/></svg></span></p>
     <div class="plans rv">
 
       <div class="plan plan-value">
@@ -1031,7 +1049,7 @@ header.shrunk .bar .brand{flex-basis:100%; margin-right:0; opacity:1; visibility
 <section class="sec cta">
   <div class="wrap">
     <h2 class="rv">Get your yard&nbsp;back <span class="cta-line">this week.<svg class="scribble" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M2.4,7.9 C26,4.9 58,3.4 96,4.1 C134,4.8 166,6.9 197.4,4.3"/></svg></span></h2>
-    <a class="tel" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>479.366.1369</a>
+    <a class="tel" href="tel:+14793661369"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg>479.366.1369<svg class="tel-ring" viewBox="0 0 400 108" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M272,10 C215,4 135,4 85,15 C38,26 13,41 16,57 C20,76 82,95 172,99 C268,103 362,93 383,71 C398,55 386,34 346,20 C328,14 306,10 290,8"/></svg></a>
   </div>
 </section>
 
