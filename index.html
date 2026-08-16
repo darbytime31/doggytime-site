@@ -196,23 +196,23 @@ nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1)}
 .js .hero h1 .type-in{opacity:0}
 .js .hero h1 .type-a .type-in{animation:showA 5.05s .85s ease infinite}
 .js .hero h1 .type-b .type-in{animation:showB 5.05s .85s ease infinite}
-/* the two spans stagger their wipe so it reads as one sweep across the line;
-   past the wipe, opacity is already 0, so the clip resets unseen before looping */
+/* the two spans stagger their wipe so it reads as one sweep back across the
+   line; past the wipe, opacity is already 0, so the clip resets unseen */
 @keyframes showA{
   0%      {opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
   8.911%  {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
-  78.218% {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
-  87.129% {opacity:1; clip-path:inset(0 -.12em 0 100%)}
-  87.3%   {opacity:0; clip-path:inset(0 -.12em 0 100%)}
-  87.5%,100%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
+  87.129% {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
+  96.040% {opacity:1; clip-path:inset(0 100% 0 -.04em)}
+  96.3%   {opacity:0; clip-path:inset(0 100% 0 -.04em)}
+  96.6%,100%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
 }
 @keyframes showB{
   0%,15.842%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
   28.713%   {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
-  87.129%   {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
-  96.040%   {opacity:1; clip-path:inset(0 -.12em 0 100%)}
-  96.3%     {opacity:0; clip-path:inset(0 -.12em 0 100%)}
-  96.6%,100%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
+  78.218%   {opacity:1; clip-path:inset(0 -.12em 0 -.04em)}
+  87.129%   {opacity:1; clip-path:inset(0 100% 0 -.04em)}
+  87.3%     {opacity:0; clip-path:inset(0 100% 0 -.04em)}
+  87.5%,100%{opacity:0; clip-path:inset(0 -.12em 0 -.04em)}
 }
 }
 }
