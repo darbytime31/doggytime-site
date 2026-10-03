@@ -2,6 +2,8 @@
 
 Marketing site for Doggytime, serving Bentonville & Centerton, AR.
 
+`logo-source.png` is the full-resolution logo master (868x890, RGBA). `logo.png` is the compressed version used on the site.
+
 Single self-contained HTML file — fonts, logo, and illustrations are all
 embedded, so it works as-is with no build step and no dependencies.
 
